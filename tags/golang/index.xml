@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Golang on ZwodahS</title>
+    <link>http://zwodahs.me/tags/golang/</link>
+    <description>Recent content in Golang on ZwodahS</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 25 Oct 2016 13:09:19 -0400</lastBuildDate>
+    
+	<atom:link href="http://zwodahs.me/tags/golang/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Learning Golang from Python (II) - Project structure</title>
+      <link>http://zwodahs.me/post/learning-go-from-python-2/</link>
+      <pubDate>Tue, 25 Oct 2016 13:09:19 -0400</pubDate>
+      
+      <guid>http://zwodahs.me/post/learning-go-from-python-2/</guid>
+      <description>In the previous post, I went into details on how to make golang work like python. After reading up a lot, I came to sense that the best way to learn golang is to unlearn how things are done in python and learn the way of Go.
+Workpace In python, I tend to have a nested workspace where I group various related modules together.
+├── dist ├── private │ ├── app.</description>
+    </item>
+    
+    <item>
+      <title>Learning Golang from Python (I) - understanding imports and packages</title>
+      <link>http://zwodahs.me/post/learning-go-from-python-1/</link>
+      <pubDate>Sat, 08 Oct 2016 16:32:00 +0800</pubDate>
+      
+      <guid>http://zwodahs.me/post/learning-go-from-python-1/</guid>
+      <description>The first problem when trying to learn golang that I encountered is wrapping my head around how packages and import work in golang. Here is what I discovered and hope that others can benefit from it.
+Let&amp;rsquo;s start 3 files that we want to migrate from python to golang
+# hello_world.py import world import lib.adder print(&amp;#34;Hello {0}&amp;#34;.format(world.world())) print(&amp;#34;1 + 1 = {0}&amp;#34;.format(lib.adder.add(1, 1)))# world.py def world(): return &amp;#34;World&amp;#34;# lib/adder.py def add(x, y): return x + y File structure</description>
+    </item>
+    
+  </channel>
+</rss>

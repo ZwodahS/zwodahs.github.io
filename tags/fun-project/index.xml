@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Fun Project on ZwodahS</title>
+    <link>http://zwodahs.me/tags/fun-project/</link>
+    <description>Recent content in Fun Project on ZwodahS</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 25 Sep 2016 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://zwodahs.me/tags/fun-project/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>JPIO</title>
+      <link>http://zwodahs.me/fun-projects/jpio/</link>
+      <pubDate>Sun, 25 Sep 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://zwodahs.me/fun-projects/jpio/</guid>
+      <description>What is JPIO Json Python IO(JPIO) is a command line utility to read/transform json data in commandline.
+Existing implementations There are a few existing implementation that are good, like &amp;lsquo;json&amp;rsquo; (written in node), and jq.
+Reason for JPIO Although there are existing implementations, I feel that the syntax can be nicer. On top of that, I want to be able to have the ability to add functionality to it without having to fork the base engine, like how git plugin system works.</description>
+    </item>
+    
+    <item>
+      <title>JPIO Query Guide</title>
+      <link>http://zwodahs.me/fun-projects/jpio/query-doc/</link>
+      <pubDate>Sun, 25 Sep 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://zwodahs.me/fun-projects/jpio/query-doc/</guid>
+      <description>This document outlines the features that I want to have in JPIO and hopefully can get to implement them. We will use an example json and use it as a reference to see what each of the command do.
+Example Json { &amp;quot;books&amp;quot; : [ { &amp;quot;id&amp;quot; : ..., &amp;quot;name&amp;quot; : ..., &amp;quot;author&amp;quot; : &amp;lt;author_id&amp;gt;, }, { &amp;quot;id&amp;quot; : ..., &amp;quot;name&amp;quot; : ..., &amp;quot;author&amp;quot; : &amp;lt;author_id&amp;gt;, }, { &amp;quot;id&amp;quot; : .</description>
+    </item>
+    
+    <item>
+      <title>Query Specification</title>
+      <link>http://zwodahs.me/fun-projects/jpio/query-spec/</link>
+      <pubDate>Sun, 25 Sep 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://zwodahs.me/fun-projects/jpio/query-spec/</guid>
+      <description>Language Specification # Statements &amp;lt;Statement&amp;gt; :- (&amp;lt;Statement&amp;gt;) &amp;lt;Statement&amp;gt; :- &amp;lt;Statement&amp;gt;|&amp;lt;Statement&amp;gt; &amp;lt;Statement&amp;gt; :- &amp;lt;SelectionStatement&amp;gt;&amp;lt;Selector&amp;gt; &amp;lt;Statement&amp;gt; :- &amp;lt;SelectionStatement&amp;gt;=&amp;lt;Statement&amp;gt; &amp;lt;Statement&amp;gt; :- &amp;lt;SelectionStatement&amp;gt;&amp;lt;FunctionChain&amp;gt; # Functions &amp;lt;FunctionChain&amp;gt; :- &amp;lt;Function&amp;gt;&amp;lt;FunctionChain&amp;gt; &amp;lt;FunctionChain&amp;gt; :- &amp;lt;Function&amp;gt; # Selectors &amp;lt;SelectionStatement&amp;gt; :- &amp;lt;Selector&amp;gt;&amp;lt;SelectionStatement&amp;gt; &amp;lt;SelectionStatement&amp;gt; :- &amp;lt;Iterator&amp;gt;&amp;lt;SelectionStatement&amp;gt; &amp;lt;SelectionStatement&amp;gt; :- &amp;lt;Iterator&amp;gt; &amp;lt;SelectionStatement&amp;gt; :- &amp;lt;Selector&amp;gt; &amp;lt;Selector&amp;gt; :- .&amp;lt;int&amp;gt; &amp;lt;Selector&amp;gt; :- .&amp;lt;float&amp;gt; &amp;lt;Selector&amp;gt; :- .&amp;lt;string&amp;gt; &amp;lt;Selector&amp;gt; :- .[&amp;lt;int&amp;gt;] # Iterators &amp;lt;Iterator&amp;gt; :- .[*] &amp;lt;Iterator&amp;gt; :- .[&amp;lt;int&amp;gt;:&amp;lt;int&amp;gt;] &amp;lt;Iterator&amp;gt; :- .[:&amp;lt;int&amp;gt;] &amp;lt;Iterator&amp;gt; :- .[&amp;lt;int&amp;gt;:] # Values &amp;lt;Value&amp;gt; :- &amp;lt;SelectionStatement&amp;gt; &amp;lt;Value&amp;gt; :- &amp;lt;int&amp;gt; &amp;lt;Value&amp;gt; :- &amp;lt;float&amp;gt; &amp;lt;Value&amp;gt; :- &amp;lt;string&amp;gt; &amp;lt;Value&amp;gt; :- &amp;lt;json&amp;gt; &amp;lt;string&amp;gt; :- s(.</description>
+    </item>
+    
+  </channel>
+</rss>

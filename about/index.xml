@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>About on ZwodahS</title>
+    <link>http://zwodahs.me/about/</link>
+    <description>Recent content in About on ZwodahS</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="http://zwodahs.me/about/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>My Tooling and Workflow</title>
+      <link>http://zwodahs.me/about/workflow/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://zwodahs.me/about/workflow/</guid>
+      <description>History I only started working on the commandline around 2012, mainly because I need to edit python scripts on the server. At this stage, I didn&amp;rsquo;t really dive into vim plugins and stuff, I just used the default one. It was only until when I started making game in C++ that I started really upgrade my tooling and build my vimfiles and dotfiles. Around 2014, I started working more on the remote server and I added tmux to my tooling.</description>
+    </item>
+    
+  </channel>
+</rss>

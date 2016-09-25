@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Git on ZwodahS</title>
+    <link>http://zwodahs.me/tags/git/</link>
+    <description>Recent content in Git on ZwodahS</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 06 Oct 2016 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://zwodahs.me/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Daily Git Workflow</title>
+      <link>http://zwodahs.me/post/daily-git-workflow/</link>
+      <pubDate>Thu, 06 Oct 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://zwodahs.me/post/daily-git-workflow/</guid>
+      <description>I would like to share a workflow that I recently got used to when using git.
+When using git, there are a few ideas that people always talk about.
+ Commit often Commit should be logical working chunk  This workflow really embraces these ideas.
+Usually my day will start with me writing code for an hour or two. During this period, I will be heavily committing my code, usually after I finish a logical part.</description>
+    </item>
+    
+  </channel>
+</rss>

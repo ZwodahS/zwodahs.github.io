@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Game projects on ZwodahS</title>
+    <link>http://zwodahs.me/game-projects/</link>
+    <description>Recent content in Game projects on ZwodahS</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 25 Sep 2016 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://zwodahs.me/game-projects/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+  </channel>
+</rss>

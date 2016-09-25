@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on ZwodahS</title>
+    <link>http://zwodahs.me/tags/</link>
+    <description>Recent content in Tags on ZwodahS</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 25 Sep 2016 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://zwodahs.me/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Fun Project</title>
+      <link>http://zwodahs.me/tags/fun-project/</link>
+      <pubDate>Sun, 25 Sep 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://zwodahs.me/tags/fun-project/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Git</title>
+      <link>http://zwodahs.me/tags/git/</link>
+      <pubDate>Thu, 06 Oct 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://zwodahs.me/tags/git/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Golang</title>
+      <link>http://zwodahs.me/tags/golang/</link>
+      <pubDate>Tue, 25 Oct 2016 13:09:19 -0400</pubDate>
+      
+      <guid>http://zwodahs.me/tags/golang/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Jpio</title>
+      <link>http://zwodahs.me/tags/jpio/</link>
+      <pubDate>Sun, 25 Sep 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://zwodahs.me/tags/jpio/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Lua</title>
+      <link>http://zwodahs.me/tags/lua/</link>
+      <pubDate>Sun, 25 Sep 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://zwodahs.me/tags/lua/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Resources</title>
+      <link>http://zwodahs.me/tags/resources/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://zwodahs.me/tags/resources/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Site Updates</title>
+      <link>http://zwodahs.me/tags/site-updates/</link>
+      <pubDate>Sun, 25 Sep 2016 10:04:40 -0400</pubDate>
+      
+      <guid>http://zwodahs.me/tags/site-updates/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tutorial</title>
+      <link>http://zwodahs.me/tags/tutorial/</link>
+      <pubDate>Sun, 25 Sep 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://zwodahs.me/tags/tutorial/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

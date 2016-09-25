@@ -1,0 +1,292 @@
+<html lang="en">
+<head>
+
+  
+  <meta charset="utf-8">
+  <title>Daily Git Workflow</title>
+  <meta name="description" content="Daily Git Workflow">
+  <meta name="author" content="">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="http://zwodahs.me/css/fonts.css">
+  
+  
+  <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+  
+
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css">
+
+  <link rel="stylesheet" href="http://zwodahs.me/css/custom.css">
+
+  
+  
+  <link rel="stylesheet" href="http://zwodahs.me/highlight/styles/default.css">
+  
+  <script src="http://zwodahs.me/highlight/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+</head>
+<body>
+
+<div class="header pure-g">
+    <div class="pure-u-1-24 pure-u-md-5-24"></div>
+    <div class="pure-u-11-12 pure-u-md-5-8">
+        
+        <div class="desktop pure-menu pure-menu-horizontal nav-menu">
+            <a href="http://zwodahs.me/" class="site-title pure-menu-heading">ZwodahS</a>
+            <ul class="pure-menu-list">
+                <li class="pure-menu-item">
+                    <a href="http://zwodahs.me/links/" class="pure-menu-link">Resources</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="http://zwodahs.me/fun-projects/" class="pure-menu-link">Fun Projects</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="http://zwodahs.me/game-projects/" class="pure-menu-link">Game Projects</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="http://zwodahs.me/tutorials/" class="pure-menu-link">Tutorials</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="http://zwodahs.me/about/" class="pure-menu-link">About Me</a>
+                </li>
+            </ul>
+        </div>
+        <div class="mobile pure-menu nav-menu">
+            <a href="/" class="pure-menu-heading" id="toggle-home">ZwodahS</a>
+            <a href="#" id="toggle-btn">&#9776;</a>
+            <ul class="pure-menu-list" id="toggle-content" style="display:none;">
+                <li class="pure-menu-item">
+                    <a href="http://zwodahs.me/links/" class="pure-menu-link">Resources</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="http://zwodahs.me/fun-projects/" class="pure-menu-link">Fun Projects</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="http://zwodahs.me/game-projects/" class="pure-menu-link">Game Projects</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="http://zwodahs.me/tutorials/" class="pure-menu-link">Tutorials</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="http://zwodahs.me/about/" class="pure-menu-link">About</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="pure-u-1-24 pure-u-md-1-6"></div>
+</div>
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-md-5-24"></div>
+	<div class="pure-u-11-12 pure-u-md-5-8">
+        <div class="post">
+
+            <div class="post-title">
+                <p class="footnote">
+                    
+                        <time class="">2016-10-06</time>
+                    
+                    
+                </p>
+                <h1>Daily Git Workflow</h1>
+            </div>
+            
+            <hr />
+            <div class="post-content">
+                <p>I would like to share a workflow that I recently got used to when using git.</p>
+
+<p>When using git, there are a few ideas that people always talk about.</p>
+
+<ul>
+<li>Commit often</li>
+<li>Commit should be logical working chunk</li>
+</ul>
+
+<p>This workflow really embraces these ideas.</p>
+
+<p>Usually my day will start with me writing code for an hour or two.
+During this period, I will be heavily committing my code, usually after I finish a logical part.</p>
+
+<p>Note that committing is not pushing.
+These code that I just wrote are not logical working commit.
+They are there to help me if I accidentally screw up something and I have something to go back to.</p>
+
+<p>Usually after working for a few hours, my history looks something like this.</p>
+
+<pre><code>* cffb62d - before dinner
+* bae28b0 - qoddiuqhjdkqwhnu
+* d2256b9 - bla
+* de58766 - fix timestamp issue
+* d0ba650 - temp
+* 4dedd9e - its working !!!
+* 3bba255 - .... (github/master)
+</code></pre>
+
+<p>Yes, I usually just type random commit messages because it is really meant to be temporary.</p>
+
+<p>At this stage, I will usually begin my resetting and re-committing.
+We will always reset to the last upstream commit, in this case it will be 3bba255.
+This will allow me to unstage everything and start commiting logical chunks.</p>
+
+<pre><code>* f3f4009 - feat(search): added search endpoint
+* 5d8bab3 - upgrade(utils): add more methods to utils.
+* 79e33d0 - refactor(base): refactor some base method
+* 3bba255 - .... (github/master)
+</code></pre>
+
+<p>If all is good and feat/search can be pushed upstream, my job is done here.
+Instead of committing the entire feature as a single commit, the refactoring and utilities are committed as a different commit.
+One of the advantages when doing this is the ability to push them upstream without pushing feat/search.</p>
+
+<p>However, this feature is rather big, and it is going to take me another day to finish it.
+Also, suppose that the utils and base is not really tested, so I am not ready to push.</p>
+
+<p>Day 2 comes and I start working on things and added the following commits</p>
+
+<pre><code>* 9e47004 - doiqjdwq
+* 4546c6a - dqwduwh
+* 878eafa - whatever
+* 89328ac - temp
+* c904eb0 - stupid bug
+* f3f4009 - feat(search): added search endpoint
+* 5d8bab3 - upgrade(utils): add more methods to utils.
+* 79e33d0 - refactor(base): refactor some base method
+* 3bba255 - .... (github/master)
+</code></pre>
+
+<p>After I am done with the day, instead of resetting to 3bba255, which is the previous upstream, I will reset to the last commit that I have committed &ldquo;properly&rdquo;.</p>
+
+<pre><code>* 5777712 - fix(feat/search):
+* dc7918a - test(base): add test cases for base
+* 27170d8 - regression(base): fix bug due to refactor
+* 24b1fd8 - fix(utils): fix some bug
+* 7a552c0 - fix(random_bug): fix random non-critical bug
+* f3f4009 - add(feat/search): added feat/search, endpoint is working
+* 5d8bab3 - upgrade(utils): add more methods to utils.
+* 79e33d0 - refactor(base): refactor some base method
+* 3bba255 - .... (github/master)
+</code></pre>
+
+<p>This is usually good enough to push but we can do better.
+From the master perspective, certain bug fixes to commits that are not pushed to master shouldn&rsquo;t really be visible, for example 24b1fd8.
+Also, in the middle of building this feature, we have fix a random non-critical bug, perhaps we can somehow push that first ?</p>
+
+<p>So rebase to the rescue.</p>
+
+<p>Let&rsquo;s start by performing a rebase - <code>rebase -i 3bba255</code>.</p>
+
+<p>You will see something like this pop up in your editor.</p>
+
+<pre><code>pick 79e33d0 refactor(base): refactor some base method
+pick 5d8bab3 upgrade(utils): add more methods to utils.
+pick f3f4009 add(feat/search): added feat/search, endpoint is working
+pick 7a552c0 fix(random_bug): fix random non-critical bug
+pick 24b1fd8 fix(utils): fix some bug
+pick 27170d8 regression(base): fix bug due to refactor
+pick dc7918a test(base): add test cases for base
+pick 5777712 fix(feat/search):
+
+# Rebase 3bba255..5777712 onto 3bba255 (7 command(s))
+# ... wall of text removed ...
+</code></pre>
+
+<p>This may look extremely confusing but once you know what it can do, it is quite amazing.</p>
+
+<p>So we need to do a few things here.</p>
+
+<p>We will be rearranging how we intend to commit; fixes first, then non-feature commits like utils and base classes, then then finally the feature.</p>
+
+<p>We will also be squashing the fixes that we introduce in this 2 days into their feature commit, since master do not need to know about it.</p>
+
+<p>So this is what we will do.</p>
+
+<pre><code>pick 7a552c0 fix(random_bug): fix random non-critical bug
+pick 79e33d0 refactor(base): refactor some base method
+squash 27170d8 regression(base): fix bug due to refactor
+squash dc7918a test(base): add test cases for base
+pick 5d8bab3 upgrade(utils): add more methods to utils.
+squash 24b1fd8 fix(utils): fix some bug
+pick f3f4009 feat(search): added search endpoint
+squash 5777712 fix(feat/search):
+</code></pre>
+
+<p>Do take note that the top is the first commit that will be committed.</p>
+
+<p>After this, your editor will open, and you will be able to enter new commit messages for those that you are squashing.</p>
+
+<p>And finally, we have</p>
+
+<pre><code>* 49b77f9 - feat(search): added search endpoint
+* 8996390 - upgrade(utils): add some methods to utils
+* 211c849 - refactor(base): refactor some base methods
+* 5fdeecf - fix(random_bug): fix random non-critical bug
+* 3bba255 - .... (github/master)
+</code></pre>
+
+<p>Of course, I haven&rsquo;t show you any code or teach you how to create logical commits.
+The rule of thumb is to ensure that every commit works, and every commit can be cherry-picked, even if you don&rsquo;t use it.</p>
+
+<p>One last thing to note when doing this.
+Do not rebase what is pushed upstreams, or you will have a bad time.</p>
+
+            </div>
+        </div>
+	</div>
+    <div class="pure-u-1-24 pure-u-md-1-6"></div>
+</div>
+
+<div class="footer pure-g">
+    <div class="pure-u-1-24 pure-u-md-5-24"></div>
+    <div class="pure-u-11-12 pure-u-md-5-8">
+        <div class="pure-menu pure-menu-horizontal footer-content">
+            <ul>
+                <li class="pure-menu-heading" id="foot-name">:</li>
+
+                
+
+                
+
+                
+
+                
+
+                
+
+            </ul>
+            <a href="#" class="pure-menu-heading pull-right" id="gototop-btn">↑↑</a>
+        </div>
+	  </div>
+      <div class="pure-u-1-24 pure-u-md-1-6"></div>
+</div>
+
+
+<script src="http://zwodahs.me/js/jquery.min.js" type="text/javascript"></script>
+<script src="http://zwodahs.me/js/jquery.timeago.js" type="text/javascript"></script>
+<script type="text/javascript">
+  $(function(){
+    $("time.timeago").timeago();
+  })
+  $("#toggle-btn").click(function(){
+    $("#toggle-content").toggle();
+    if($(this).html() === "☰") {
+        $(this).html("X")
+    } else {
+        $(this).html("☰")
+    }
+  });
+  $(window).resize(function(){
+    if(window.innerWidth > 768) {
+      $(".desktop").removeAttr("style");
+    }
+  });
+</script>
+
+</body>
+</html>
+

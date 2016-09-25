@@ -1,0 +1,454 @@
+<html lang="en">
+<head>
+
+  
+  <meta charset="utf-8">
+  <title>Accessing C&#43;&#43; objects from lua</title>
+  <meta name="description" content="Accessing C&#43;&#43; objects from lua">
+  <meta name="author" content="">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="http://zwodahs.me/css/fonts.css">
+  
+  
+  <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+  
+
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css">
+
+  <link rel="stylesheet" href="http://zwodahs.me/css/custom.css">
+
+  
+  
+  <link rel="stylesheet" href="http://zwodahs.me/highlight/styles/default.css">
+  
+  <script src="http://zwodahs.me/highlight/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+</head>
+<body>
+
+<div class="header pure-g">
+    <div class="pure-u-1-24 pure-u-md-5-24"></div>
+    <div class="pure-u-11-12 pure-u-md-5-8">
+        
+        <div class="desktop pure-menu pure-menu-horizontal nav-menu">
+            <a href="http://zwodahs.me/" class="site-title pure-menu-heading">ZwodahS</a>
+            <ul class="pure-menu-list">
+                <li class="pure-menu-item">
+                    <a href="http://zwodahs.me/links/" class="pure-menu-link">Resources</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="http://zwodahs.me/fun-projects/" class="pure-menu-link">Fun Projects</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="http://zwodahs.me/game-projects/" class="pure-menu-link">Game Projects</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="http://zwodahs.me/tutorials/" class="pure-menu-link">Tutorials</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="http://zwodahs.me/about/" class="pure-menu-link">About Me</a>
+                </li>
+            </ul>
+        </div>
+        <div class="mobile pure-menu nav-menu">
+            <a href="/" class="pure-menu-heading" id="toggle-home">ZwodahS</a>
+            <a href="#" id="toggle-btn">&#9776;</a>
+            <ul class="pure-menu-list" id="toggle-content" style="display:none;">
+                <li class="pure-menu-item">
+                    <a href="http://zwodahs.me/links/" class="pure-menu-link">Resources</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="http://zwodahs.me/fun-projects/" class="pure-menu-link">Fun Projects</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="http://zwodahs.me/game-projects/" class="pure-menu-link">Game Projects</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="http://zwodahs.me/tutorials/" class="pure-menu-link">Tutorials</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="http://zwodahs.me/about/" class="pure-menu-link">About</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="pure-u-1-24 pure-u-md-1-6"></div>
+</div>
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-md-5-24"></div>
+	<div class="pure-u-11-12 pure-u-md-5-8">
+        <div class="post">
+
+            <div class="post-title">
+                <p class="footnote">
+                    
+                        <time class="">2016-09-25</time>
+                    
+                    
+                </p>
+                <h1>Accessing C&#43;&#43; objects from lua</h1>
+            </div>
+            
+            <hr />
+            <div class="post-content">
+                <p>In this tutorial, I will cover one method that you can use to access C++ objects from Lua.</p>
+
+<p>To start, let me describe the scenario that we will be implementing.</p>
+
+<p>Assume that we are making a game and we want to calculate the damage that each unit takes in a fight.
+Each unit has a damage attribute and a health attribute.
+We will do the calculation in the Lua script but store the attributes inside the C++ objects.
+This is useful if you have various kinds of skill that a unit can use and the damage depends on the attribute of the unit.
+You can do this in just C++ but doing it in Lua allows you to write new skills without having to recompile the game.</p>
+
+<p>First, let us start with the Unit object.</p>
+
+<pre><code>class Unit
+{
+public:
+    Unit(const int&amp; d = 1, const int&amp; h = 20)
+        : damage(d), health(h)
+    {
+    }
+    int damage;
+    int health;
+
+    void dealtDamage(const int&amp; damage)
+    {
+        health -= damage;
+        health = health &lt; 0 ? 0 : health;
+    }
+
+    int getDamage()
+    {
+        return damage;
+    }
+};
+</code></pre>
+
+<p>There is nothing we need change when writing the object we want to access from Lua.
+We will just write it normally.</p>
+
+<p>The function that calculate and deals the damage looks like this.</p>
+
+<pre><code>function applyDamage(attacker, target)
+    local damage = attacker:getDamage();
+    target:dealtDamage(damage);
+end
+</code></pre>
+
+<p>We will also write a wrapper for the function so we can use it easily.</p>
+
+<pre><code>class ApplyDamageFunction
+{
+public:
+    ApplyDamageFunction(const std::string&amp; functionname)
+        : function(functionname)
+    {
+    }
+    std::string function;
+    void applyDamage(lua_State* L, Unit&amp; attacker, Unit&amp; defender)
+    {
+        lua_getglobal(L, function.c_str());
+        int type = lua_type(L, -1);
+        if(type == LUA_TFUNCTION)
+        {
+            putUnit(L, attacker);
+            putUnit(L, defender);
+            lua_call(L, 2, 0);
+        }
+        else
+        {
+            std::cout &lt;&lt; &quot;Cannot find &quot; &lt;&lt; function &lt;&lt; &quot;function&quot; &lt;&lt; std::endl;
+        }
+    }
+};
+</code></pre>
+
+<p>Ignore the &ldquo;putUnit&rdquo; function for now.
+What it does is putting a unit object onto the stack.
+We will cover it in a short while.</p>
+
+<p>To access the C++ objects from Lua, you will need to make use of metatable and userdata type.
+Let me show the code for creating metatable in C++ first.</p>
+
+<pre><code>void loadWrapper(lua_State* L)
+{
+    /**
+     * This creates the meta table and put it on the stack and give it a name so you can use it later.
+     */
+    luaL_newmetatable(L, &quot;UnitMT&quot;);
+    /**
+     * This tells all object with this metatable to search itself for all the missing &quot;index&quot;
+     */
+    lua_pushvalue(L, -1);
+    lua_setfield(L, -2, &quot;__index&quot;);
+    /**
+     * Each of the follow pairs push the cfunction onto the stack and add the function to the metatable.
+     * The metatable will still be on the stack after each of the call.
+     */
+    // set the getDamage method
+    lua_pushcfunction(L, function_unit_getDamage);
+    lua_setfield(L, -2, &quot;getDamage&quot;);
+    // set the dealt damage method
+    lua_pushcfunction(L, function_unit_dealtDamage);
+    lua_setfield(L, -2, &quot;dealtDamage&quot;);
+    // set the health method
+    lua_pushcfunction(L, function_unit_health);
+    lua_setfield(L, -2, &quot;health&quot;);
+    // pop the meta table from the stack
+    lua_pop(L, 1);
+}
+</code></pre>
+
+<p>The first part creates the metatable.
+The second part tells all objects with this metatable to search itself for missing index. I will touch on this later.
+The last part align C functions to the various field in the metatable.
+This part just register the metatable to be used later.</p>
+
+<p>To put the C++ object onto the stack, we want to make use of userdata.</p>
+
+<pre><code>void putUnit(lua_State* L, Unit&amp; unit)
+{
+    Unit** userdata = static_cast&lt;Unit**&gt;(lua_newuserdata(L, sizeof(Unit*)));
+    *userdata = &amp;unit;
+    luaL_setmetatable(L, &quot;UnitMT&quot;);
+}
+</code></pre>
+
+<p>This creates a userdata that stores a pointer to a unit object(Unit*).
+The lua_newuserdata method will return the address to the pointer(Unit**).
+After we set the pointer to points to our unit object, we then set the metatable to the userdata.
+This allows the Lua script to know the method that is available to the userdata.</p>
+
+<p>Now we have the method to put the c++ object onto the Lua stack, we can start writing wrapper for the methods.
+Similar to the previous tutorial, all methods used by Lua must follow the same signature.
+I will use the getDamage method as an example to show how to do it.
+Check out the source code to see how the other method are done.</p>
+
+<pre><code>    static int function_unit_getDamage(lua_State* L)
+    {
+        Unit** unit = static_cast&lt;Unit**&gt;(luaL_testudata(L, 1, &quot;UnitMT&quot;));
+        if(unit)
+        {
+            int damage = (**unit).getDamage();
+            lua_pushnumber(L, damage);
+        }
+        else
+        {
+            lua_pushnil(L);
+        }
+        return 1;
+    }
+</code></pre>
+
+<p>When we call unit:getDamage() in the Lua script, it is similar to calling <em>unit.getDamage(unit)</em>.
+So in order to get the caller of the method, we will just need to take it from the first argument.
+You could use <em>unit.getDamage(unit)</em> instead of <em>unit:getDamage()</em> but that just weird.
+Also, when this is called, the userdata do not have the getDamage method.
+So, it will look for the method in the table defined in __index, in this case, the UnitMT table.</p>
+
+<p>In this case, I have use testudata instead of checkudata to get the object.
+The main difference is testudata do not throw error if it fails; instead it returns a nullptr.
+We also make sure that the udata have a metatable of UnitMT.</p>
+
+<p>After we get the object, we just need to push the damage value back onto the stack.</p>
+
+<p>So to wrap things up, here is the main method.</p>
+
+<pre><code>int main(int argc, char* argv[])
+{
+    lua_State* L = setupLuaState();
+
+    // load the function.
+    load(L, &quot;functions.lua&quot;);
+    // load the Unit Wrapper.
+    loadWrapper(L);
+
+    ApplyDamageFunction damageFunction(&quot;applyDamage&quot;);
+
+    Unit unit1(12, 30);
+    Unit unit2(7, 40);
+
+    std::cout &lt;&lt; &quot;Health of unit1 and unit2 before unit1 deals damage to unit2 : [Unit1 : &quot; &lt;&lt; unit1.health &lt;&lt; &quot;] [Unit2 : &quot; &lt;&lt; unit2.health &lt;&lt; &quot;]&quot; &lt;&lt; std::endl;
+    damageFunction.applyDamage(L, unit1, unit2);
+    std::cout &lt;&lt; &quot;Health of unit1 and unit2 after unit1 deals damage to unit2 : [Unit1 : &quot; &lt;&lt; unit1.health &lt;&lt; &quot;] [Unit2 : &quot; &lt;&lt; unit2.health &lt;&lt; &quot;]&quot; &lt;&lt; std::endl;
+    damageFunction.applyDamage(L, unit2, unit1);
+    std::cout &lt;&lt; &quot;Health of unit1 and unit2 after unit2 deals damage to unit1 : [Unit1 : &quot; &lt;&lt; unit1.health &lt;&lt; &quot;] [Unit2 : &quot; &lt;&lt; unit2.health &lt;&lt; &quot;]&quot; &lt;&lt; std::endl;
+
+    cleanup(L);
+    return 0;
+}
+</code></pre>
+
+<p>I kind of rushed through this part of the tutorial.
+If there is any part that is unclear, email me and I will try to write it better.
+The code for this part of the tutorial can be found <a href="https://github.com/ZwodahS/lua-examples/tree/master/tutorial/5">here</a>, in the file basic.cpp.</p>
+
+<p>Next I will briefly cover how to do inheritance in Lua by extending the example above.</p>
+
+<p>Suppose now we want to add a new child class to Unit; Hero.
+This class have an additional attribute &ldquo;name&rdquo;.
+It will look something like this in C++.</p>
+
+<pre><code>class Hero : public Unit
+{
+public:
+    Hero(const int&amp; d = 1, const int&amp; h = 20, const std::string&amp; n = &quot;&quot;)
+        : Unit(d, h), name(n)
+    {
+    }
+    std::string name;
+    virtual int getDamage()
+    {
+        return Unit::getDamage() + 20;
+    }
+};
+</code></pre>
+
+<p>And the method for the getName function for lua</p>
+
+<pre><code>static int function_hero_name(lua_State* L)
+{
+    int args = lua_gettop(L);
+    if(args == 1)
+    {
+        Hero** hero = static_cast&lt;Hero**&gt;(luaL_testudata(L, 1, &quot;HeroMT&quot;));
+        if(hero)
+        {
+            lua_pushstring(L, (**hero).name.c_str());
+        }
+        else
+        {
+            lua_pushnil(L);
+        }
+    }
+    else
+    {
+        lua_pushnil(L);
+    }
+    return 1;
+}
+</code></pre>
+
+<p>So what are the things that we need to change.
+Let us start by creating the metatable for Hero.</p>
+
+<pre><code>    luaL_newmetatable(L, &quot;HeroMT&quot;);
+    lua_pushvalue(L, -1);
+    lua_setfield(L, -2, &quot;__index&quot;);
+
+    lua_pushcfunction(L, function_hero_name);
+    lua_setfield(L, -2, &quot;getName&quot;);
+
+    lua_pop(L, 1);
+</code></pre>
+
+<p>In order for the method in UnitMT to be accessible for HeroMT, we need to set the metatable of HeroMT to UnitMT.
+So the full code for loading the HeroMT table will look like this</p>
+
+<pre><code>    luaL_newmetatable(L, &quot;HeroMT&quot;);
+    lua_pushvalue(L, -1);
+    lua_setfield(L, -2, &quot;__index&quot;);
+
+    lua_pushcfunction(L, function_hero_name);
+    lua_setfield(L, -2, &quot;getName&quot;);
+    /**
+     * Set the parent of Hero to Unit
+     */
+    luaL_setmetatable(L, &quot;UnitMT&quot;);
+
+    lua_pop(L, 1);
+</code></pre>
+
+<p>This seems enough to do the trick but we still got one more thing to do.
+If we call the method in UnitMT using a object with metatable &ldquo;HeroMT&rdquo;, the following method will return a nullptr</p>
+
+<pre><code>Unit** unit = static_cast&lt;Unit**&gt;(luaL_testudata(L, 1, &quot;UnitMT&quot;));
+</code></pre>
+
+<p>So for methods that are uses this, we will have to replace it with</p>
+
+<pre><code>Unit* unit = getUnit(L, 1);
+</code></pre>
+
+<p>And the getUnit method looks something like this</p>
+
+<pre><code>Unit* getUnit(lua_State* L, const int&amp; index)
+{
+    Unit** userdata = static_cast&lt;Unit**&gt;(luaL_testudata(L, index, &quot;UnitMT&quot;));
+    Hero** herodata = static_cast&lt;Hero**&gt;(luaL_testudata(L, index, &quot;HeroMT&quot;));
+    return userdata ? *userdata : herodata ? *herodata : nullptr;
+}
+</code></pre>
+
+<p>If you have more classes that extends Unit, then you would have to change this to cater to them.
+For now this will do.
+The full code can be found in the same folder, inside a different cpp file : inheritance.cpp.
+I guess that is it for now.</p>
+
+<p><a href="/tutorials/lua/3">[&lt;&lt; Running a C++ function from Lua]</a> <a href="/tutorials/lua">[Tutorial Index]</a> <a href="/tutorials/lua/6">[Package a function in Lua &gt;&gt;]</a></p>
+
+            </div>
+        </div>
+	</div>
+    <div class="pure-u-1-24 pure-u-md-1-6"></div>
+</div>
+
+<div class="footer pure-g">
+    <div class="pure-u-1-24 pure-u-md-5-24"></div>
+    <div class="pure-u-11-12 pure-u-md-5-8">
+        <div class="pure-menu pure-menu-horizontal footer-content">
+            <ul>
+                <li class="pure-menu-heading" id="foot-name">:</li>
+
+                
+
+                
+
+                
+
+                
+
+                
+
+            </ul>
+            <a href="#" class="pure-menu-heading pull-right" id="gototop-btn">↑↑</a>
+        </div>
+	  </div>
+      <div class="pure-u-1-24 pure-u-md-1-6"></div>
+</div>
+
+
+<script src="http://zwodahs.me/js/jquery.min.js" type="text/javascript"></script>
+<script src="http://zwodahs.me/js/jquery.timeago.js" type="text/javascript"></script>
+<script type="text/javascript">
+  $(function(){
+    $("time.timeago").timeago();
+  })
+  $("#toggle-btn").click(function(){
+    $("#toggle-content").toggle();
+    if($(this).html() === "☰") {
+        $(this).html("X")
+    } else {
+        $(this).html("☰")
+    }
+  });
+  $(window).resize(function(){
+    if(window.innerWidth > 768) {
+      $(".desktop").removeAttr("style");
+    }
+  });
+</script>
+
+</body>
+</html>
+

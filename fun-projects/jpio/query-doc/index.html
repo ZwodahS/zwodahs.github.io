@@ -1,0 +1,251 @@
+<html lang="en">
+<head>
+
+  
+  <meta charset="utf-8">
+  <title>JPIO Query Guide</title>
+  <meta name="description" content="JPIO Query Guide">
+  <meta name="author" content="">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="http://zwodahs.me/css/fonts.css">
+  
+  
+  <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+  
+
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css">
+
+  <link rel="stylesheet" href="http://zwodahs.me/css/custom.css">
+
+  
+  
+  <link rel="stylesheet" href="http://zwodahs.me/highlight/styles/default.css">
+  
+  <script src="http://zwodahs.me/highlight/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+</head>
+<body>
+
+<div class="header pure-g">
+    <div class="pure-u-1-24 pure-u-md-5-24"></div>
+    <div class="pure-u-11-12 pure-u-md-5-8">
+        
+        <div class="desktop pure-menu pure-menu-horizontal nav-menu">
+            <a href="http://zwodahs.me/" class="site-title pure-menu-heading">ZwodahS</a>
+            <ul class="pure-menu-list">
+                <li class="pure-menu-item">
+                    <a href="http://zwodahs.me/links/" class="pure-menu-link">Resources</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="http://zwodahs.me/fun-projects/" class="pure-menu-link">Fun Projects</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="http://zwodahs.me/game-projects/" class="pure-menu-link">Game Projects</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="http://zwodahs.me/tutorials/" class="pure-menu-link">Tutorials</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="http://zwodahs.me/about/" class="pure-menu-link">About Me</a>
+                </li>
+            </ul>
+        </div>
+        <div class="mobile pure-menu nav-menu">
+            <a href="/" class="pure-menu-heading" id="toggle-home">ZwodahS</a>
+            <a href="#" id="toggle-btn">&#9776;</a>
+            <ul class="pure-menu-list" id="toggle-content" style="display:none;">
+                <li class="pure-menu-item">
+                    <a href="http://zwodahs.me/links/" class="pure-menu-link">Resources</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="http://zwodahs.me/fun-projects/" class="pure-menu-link">Fun Projects</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="http://zwodahs.me/game-projects/" class="pure-menu-link">Game Projects</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="http://zwodahs.me/tutorials/" class="pure-menu-link">Tutorials</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="http://zwodahs.me/about/" class="pure-menu-link">About</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="pure-u-1-24 pure-u-md-1-6"></div>
+</div>
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-md-5-24"></div>
+	<div class="pure-u-11-12 pure-u-md-5-8">
+        <div class="post">
+
+            <div class="post-title">
+                <p class="footnote">
+                    
+                        <time class="">2016-09-25</time>
+                    
+                    
+                </p>
+                <h1>JPIO Query Guide</h1>
+            </div>
+            
+            <hr />
+            <div class="post-content">
+                
+
+<p>This document outlines the features that I want to have in JPIO and hopefully can get to implement them.
+We will use an example json and use it as a reference to see what each of the command do.</p>
+
+<h2 id="example-json">Example Json</h2>
+
+<pre><code>{
+    &quot;books&quot; : [
+        { &quot;id&quot; : ..., &quot;name&quot; : ..., &quot;author&quot; : &lt;author_id&gt;, },
+        { &quot;id&quot; : ..., &quot;name&quot; : ..., &quot;author&quot; : &lt;author_id&gt;, },
+        { &quot;id&quot; : ..., &quot;name&quot; : ..., &quot;author&quot; : &lt;author_id&gt;, },
+        ...
+    ],
+    &quot;authors&quot; :[
+        { &quot;id&quot; : ..., &quot;first_name&quot; : ..., &quot;last_name&quot;: .... },
+        { &quot;id&quot; : ..., &quot;first_name&quot; : ..., &quot;last_name&quot;: .... },
+        { &quot;id&quot; : ..., &quot;first_name&quot; : ..., &quot;last_name&quot;: .... },
+        ...
+    ],
+    &quot;last_updated&quot; : ...,
+}
+</code></pre>
+
+<h2 id="basic-features">Basic Features</h2>
+
+<h3 id="query">Query</h3>
+
+<p><code>.&lt;identifier&gt;</code> should allow you to return a field in the json.
+For example, <code>.last_updated</code> should return the last updated field in the above json.</p>
+
+<p><code>.[*]</code> will allow you to iterate a list.
+For example, <code>.books.[*]</code> should return <code>[ &lt;book&gt;, &lt;book&gt;, ...]</code>.
+In additional to that, you should be able to create a list of books name simply by <code>.books.[*].name</code>, which will then return [name, name, name, &hellip;]</p>
+
+<p>Partial list can also be returned.
+For example <code>.books.[0:10]</code> will return you the first 10 books, or just <code>.books.[:10]</code>.</p>
+
+<p>Single item selection uses a similar syntax.
+<code>.books.[0]</code> will return the first book in the list.
+<code>.books.0</code> should also returns the same result.</p>
+
+<h3 id="modifications">Modifications</h3>
+
+<p>There should be a way to do modification to the json data and output in a json format.</p>
+
+<p>Ideally, <code>.books[0].name=blablabla</code> should set the name of the first book to blablabla.</p>
+
+<p>There should also be ways to add new items to existing dict. <code>.books.0.state=borrowed</code> should create a new field in the first book.
+Similarly, we should be able to also create it for all the books using <code>.books.[*].state=borrowed</code>.</p>
+
+<p>In order to differentiate between string and number in bash, we need a way to explictly state the type.
+I have opt for the following syntax <code>.books.0.count=i(3)</code>, which state the count to 3(int) instead of string.
+The type that should be supported are int (created via <code>i(???)</code>), float <code>f(???)</code>, string <code>s(???)</code>, json <code>j(???)</code>.
+Json type in this case, is a json-string that can be parsed and then assigned to the field.
+An example will be <code>.books.[*].author_data=j({&quot;name&quot; : &quot;???&quot;})</code>.
+Once inside a typed bracket <code>()</code>, the only character that need to be escaped is the closing <code>)</code>.</p>
+
+<p>Instead of using the normal <code>\</code> as escape char, I have opt for using <code>~</code> instead, as that is less used.</p>
+
+<p>Any modification-type query should return the original input with the modification.</p>
+
+<h3 id="string-interpolation">String interpolation</h3>
+
+<p>(coming soon)</p>
+
+<h2 id="advanced-features">Advanced Features</h2>
+
+<h3 id="internal-functions">Internal functions</h3>
+
+<p>To have a extensible feature, we need to have functions.
+For example, to sort a list, we can <code>.books#sort()</code> will sort the books.</p>
+
+<p>The basic stuffs that can be implemented here includes things like <code>#upper()</code> <code>#lower()</code> for strings, <code>#filter()</code>, <code>#sort()</code> for list, <code>#keys()</code>, <code>#values()</code> for dictionary.</p>
+
+<h3 id="piping">Piping</h3>
+
+<p>In order to chain multiple modification in one, we need to have pipe.</p>
+
+<p><code>.books.[*].name#upper() | .authors.[*].first_name#upper()</code> will change the name of all books to upper case and change all first name of all authors to upper case.</p>
+
+<p>On top of that, some operations can only be performed if we have piping, like sorting all the names of all the books.</p>
+
+<p><code>.books[*].name#sort</code> is ambiguous.
+<code>.books[*].name | #sort</code> is more readable and understandable.</p>
+
+<h3 id="acessing-other-fields">Acessing other fields</h3>
+
+<p>What if we want to make the author field in books to be denormalized and return all the books ?</p>
+
+<p><code>.books.[*].author=.authors#find(id, &amp;.author)</code></p>
+
+<p>In this case, the &amp; denote the current iteration&rsquo;s value.
+Is this too crazy? I think so.</p>
+
+            </div>
+        </div>
+	</div>
+    <div class="pure-u-1-24 pure-u-md-1-6"></div>
+</div>
+
+<div class="footer pure-g">
+    <div class="pure-u-1-24 pure-u-md-5-24"></div>
+    <div class="pure-u-11-12 pure-u-md-5-8">
+        <div class="pure-menu pure-menu-horizontal footer-content">
+            <ul>
+                <li class="pure-menu-heading" id="foot-name">:</li>
+
+                
+
+                
+
+                
+
+                
+
+                
+
+            </ul>
+            <a href="#" class="pure-menu-heading pull-right" id="gototop-btn">↑↑</a>
+        </div>
+	  </div>
+      <div class="pure-u-1-24 pure-u-md-1-6"></div>
+</div>
+
+
+<script src="http://zwodahs.me/js/jquery.min.js" type="text/javascript"></script>
+<script src="http://zwodahs.me/js/jquery.timeago.js" type="text/javascript"></script>
+<script type="text/javascript">
+  $(function(){
+    $("time.timeago").timeago();
+  })
+  $("#toggle-btn").click(function(){
+    $("#toggle-content").toggle();
+    if($(this).html() === "☰") {
+        $(this).html("X")
+    } else {
+        $(this).html("☰")
+    }
+  });
+  $(window).resize(function(){
+    if(window.innerWidth > 768) {
+      $(".desktop").removeAttr("style");
+    }
+  });
+</script>
+
+</body>
+</html>
+

@@ -1,0 +1,358 @@
+<html lang="en">
+<head>
+
+  
+  <meta charset="utf-8">
+  <title>Running Lua function from C&#43;&#43;</title>
+  <meta name="description" content="Running Lua function from C&#43;&#43;">
+  <meta name="author" content="">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="http://zwodahs.me/css/fonts.css">
+  
+  
+  <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+  
+
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css">
+
+  <link rel="stylesheet" href="http://zwodahs.me/css/custom.css">
+
+  
+  
+  <link rel="stylesheet" href="http://zwodahs.me/highlight/styles/default.css">
+  
+  <script src="http://zwodahs.me/highlight/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+</head>
+<body>
+
+<div class="header pure-g">
+    <div class="pure-u-1-24 pure-u-md-5-24"></div>
+    <div class="pure-u-11-12 pure-u-md-5-8">
+        
+        <div class="desktop pure-menu pure-menu-horizontal nav-menu">
+            <a href="http://zwodahs.me/" class="site-title pure-menu-heading">ZwodahS</a>
+            <ul class="pure-menu-list">
+                <li class="pure-menu-item">
+                    <a href="http://zwodahs.me/links/" class="pure-menu-link">Resources</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="http://zwodahs.me/fun-projects/" class="pure-menu-link">Fun Projects</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="http://zwodahs.me/game-projects/" class="pure-menu-link">Game Projects</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="http://zwodahs.me/tutorials/" class="pure-menu-link">Tutorials</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="http://zwodahs.me/about/" class="pure-menu-link">About Me</a>
+                </li>
+            </ul>
+        </div>
+        <div class="mobile pure-menu nav-menu">
+            <a href="/" class="pure-menu-heading" id="toggle-home">ZwodahS</a>
+            <a href="#" id="toggle-btn">&#9776;</a>
+            <ul class="pure-menu-list" id="toggle-content" style="display:none;">
+                <li class="pure-menu-item">
+                    <a href="http://zwodahs.me/links/" class="pure-menu-link">Resources</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="http://zwodahs.me/fun-projects/" class="pure-menu-link">Fun Projects</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="http://zwodahs.me/game-projects/" class="pure-menu-link">Game Projects</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="http://zwodahs.me/tutorials/" class="pure-menu-link">Tutorials</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="http://zwodahs.me/about/" class="pure-menu-link">About</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="pure-u-1-24 pure-u-md-1-6"></div>
+</div>
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-md-5-24"></div>
+	<div class="pure-u-11-12 pure-u-md-5-8">
+        <div class="post">
+
+            <div class="post-title">
+                <p class="footnote">
+                    
+                        <time class="">2016-09-25</time>
+                    
+                    
+                </p>
+                <h1>Running Lua function from C&#43;&#43;</h1>
+            </div>
+            
+            <hr />
+            <div class="post-content">
+                
+
+<p>In this tutorial, we will cover how to run a Lua function with a C++ program.
+There are 2 parts to the tutorial.
+The first part will cover how to call the function.
+The second part will show a simple way to wrap your Lua function inside a C++ function.
+In additional, we will see how to return multiple values from Lua function and how to access it from C++.</p>
+
+<h3 id="part-1-running-a-lua-function-from-c">Part 1 : Running a Lua Function from C++</h3>
+
+<p>Let me begin by showing you the Lua function that we want to call.</p>
+
+<pre><code>function compute(x, y)
+    return x - y
+end
+</code></pre>
+
+<pre><code>int main(int argc, char* argv[])
+{
+    lua_State* L = setupLuaState();
+
+    load(L, &quot;function.lua&quot;);
+    //////////////////// Single return value function -- &quot;compute&quot; ////////////////////////
+    lua_getglobal(L, &quot;compute&quot;);                                    // get the function &quot;compute&quot; from the global namespace and put it on the stack
+    int type = lua_type(L, -1);                                     // get the type of the item that we just put on the stack
+    if(type == LUA_TFUNCTION)                                       // check that it is a function
+    {
+        lua_pushnumber(L, 3);                                       // x
+        lua_pushnumber(L, 4);                                       // y
+        lua_call(L, 2, 1);                                          // call the function, 2 (argument count), 1 (number of return value)
+        int sum = (int) luaL_checkint(L, -1);                       // get the return value from the stack.
+        lua_pop(L, 1);                                              // pop the value from the stack
+        std::cout &lt;&lt; &quot;[C++] Return value : &quot; &lt;&lt; sum&lt;&lt; std::endl;    // output the value
+    }
+    else
+    {
+        std::cout &lt;&lt; &quot;[C++] No such function !&quot; &lt;&lt; std::endl;
+        lua_pop(L, 1);                                              // remove the item from the stack. We don't really know what it is.
+    }
+    /////////////////////////////////////////////////////////////////////////////////////
+    cleanup(L);
+    return 0;
+}
+</code></pre>
+
+<p>Like the previous tutorial, we use the load method to load the script.
+All function declared inside the script will be loaded into the global namespace.
+We will discuss how to create modules/packages in the later tutorial.</p>
+
+<p>To communicate from C++ to lua, we need to visualize a stack.
+The stack can be access using positive index and negative index.
+For example, a stack with 4 items will look like this.</p>
+
+<pre><code>Top Item    : [ -1 ] [ 4 ]
+            : [ -2 ] [ 3 ]
+            : [ -3 ] [ 2 ]
+Bottom Item : [ -4 ] [ 1 ]
+</code></pre>
+
+<p>When the Lua State is first created, there will be nothing on the stack.</p>
+
+<p>The first method we call in C++ is</p>
+
+<pre><code>lua_getglobal(L, variablename);
+</code></pre>
+
+<p>The lua_getglobal method gets an object from the global namespace and put it onto the stack.
+The object can be anything, string, integer, or in this case a function.</p>
+
+<p>To be safe, we check the type of the item by</p>
+
+<pre><code>lua_type(L, -1)
+</code></pre>
+
+<p>This function get type of the item at the specified index.
+In this case, -1 is the top item on the stack.</p>
+
+<p>We check the type of the item and make sure we have a function.
+If you want to know the list of types, you can look at the lua manual.
+Now that we have ensure that it is a function, we can call the function.</p>
+
+<p>To call the function, we need to visualize the stack again.</p>
+
+<p>We have a function that looks like this</p>
+
+<pre><code>compute(x, y)
+</code></pre>
+
+<p>we will need to construct the stack such that it looks like</p>
+
+<pre><code>Top      : [ y ]         [ -1 ] [ 3 ]
+           [ x ]         [ -2 ] [ 2 ]
+Bottom   : [ compute ]   [ -3 ] [ 1 ]
+</code></pre>
+
+<p>Since the compute function is already on the stack, we will only need to push the 2 integers in this order.</p>
+
+<pre><code>lua_pushnumber(L, 3); //  x
+lua_pushnumber(L, 4); //  y
+</code></pre>
+
+<p>Lua API provides push methods for different datatypes.
+In this case, we will push 2 numbers onto the stack.</p>
+
+<p>In order to call the compute function, we will use the following Lua API method.</p>
+
+<pre><code>lua_call(L, nargs, nreturns);
+</code></pre>
+
+<p>This will call the function at the (-nargs + (-1)) position, providing the function with nargs arguments.
+In this case, the nargs is 2 and the compute function is at the -3 position.</p>
+
+<p>The number of return value in this case is 1, and the return value will be pushed onto the stack.
+When you call lua_call, the function along with arguments are popped from the stack.
+After function is called, the stack will look like this.</p>
+
+<pre><code>Top     : [Return value]   [-1]
+</code></pre>
+
+<p>To retrieve the value, we will need to take it from the stack as well.
+This can be done using</p>
+
+<pre><code>int value = luaL_checkint(L, -1);
+</code></pre>
+
+<p>There are many check methods for different datatypes.
+All of them will throw an error if it value is not of that type.
+You can first check the type of the value by using lua_type first.
+You can find the full list of check method in the Lua manual.</p>
+
+<p>luaL_checkXXX will only peek at the value and not pop it so we have to do it manually.</p>
+
+<pre><code>lua_pop(L, 1);
+</code></pre>
+
+<p>lua_pop takes in an integer representing the number of things to pop, <em>not</em> the index.
+It is always a good practice to return the stack to the original state that you started with.</p>
+
+<h3 id="part-2-wrapper-and-multiple-return-value">Part 2 : Wrapper and Multiple return value</h3>
+
+<p>Lua function support multiple return values. To demostrate this, I have made a second lua function</p>
+
+<pre><code>function multi_compute(x, y, z)
+    return x + y, y + z, x + z
+end
+</code></pre>
+
+<p>In this part of the example, I also created a wrapper for the function in C++.</p>
+
+<pre><code>std::vector&lt;int&gt; multi(lua_State* L, int x, int y, int z)
+{
+    std::vector&lt;int&gt; ints;
+    lua_getglobal(L, &quot;multi_compute&quot;);
+    if(lua_type(L, -1) == LUA_TFUNCTION)
+    {
+        lua_pushnumber(L, x);
+        lua_pushnumber(L, y);
+        lua_pushnumber(L, z);
+        lua_call(L, 3, 3);
+        int xy = (int) luaL_checkint(L, -3);
+        int yz = (int) luaL_checkint(L, -2);
+        int xz = (int) luaL_checkint(L, -1);
+        lua_pop(L, 3);
+        ints.push_back(xy);
+        ints.push_back(yz);
+        ints.push_back(xz);
+    }
+    else
+    {
+        lua_pop(L, 1);
+    }
+    return ints;
+}
+</code></pre>
+
+<p>Most of them should look familiar to you.
+The important thing to take note here is the order which the return values are retrieved.
+The last thing left is to call this method.</p>
+
+<pre><code>int main(int argc, char* argv[])
+{
+    lua_State* L = setupLuaState();
+    load(L, &quot;function.lua&quot;);
+    ////////////////////// multiple return value function -- &quot;multi_compute&quot; //////////////
+    auto ints = multi(L, 1, 3, 5);
+    if(ints.size() == 3)
+    {
+        std::cout &lt;&lt; &quot;[C++] X + Y : &quot; &lt;&lt; ints[0] &lt;&lt; std::endl;
+        std::cout &lt;&lt; &quot;[C++] Y + Z : &quot; &lt;&lt; ints[1] &lt;&lt; std::endl;
+        std::cout &lt;&lt; &quot;[C++] X + Z : &quot; &lt;&lt; ints[2] &lt;&lt; std::endl;
+    }
+    cleanup(L);
+    return 0;
+}
+</code></pre>
+
+<p>That is all that is needed to call a Lua function from C++.
+The code for this part of the tutorial can be found <a href="https://github.com/ZwodahS/lua-examples/tree/master/tutorial/2">here</a>.
+Now to the next part, calling a C method from lua</p>
+
+<p><a href="/tutorials/lua/1">[&lt;&lt; Setting up]</a> <a href="/tutorials/lua">[Tutorial Index]</a> <a href="/tutorials/lua/3">[Running a C++ function from Lua &gt;&gt;]</a></p>
+
+            </div>
+        </div>
+	</div>
+    <div class="pure-u-1-24 pure-u-md-1-6"></div>
+</div>
+
+<div class="footer pure-g">
+    <div class="pure-u-1-24 pure-u-md-5-24"></div>
+    <div class="pure-u-11-12 pure-u-md-5-8">
+        <div class="pure-menu pure-menu-horizontal footer-content">
+            <ul>
+                <li class="pure-menu-heading" id="foot-name">:</li>
+
+                
+
+                
+
+                
+
+                
+
+                
+
+            </ul>
+            <a href="#" class="pure-menu-heading pull-right" id="gototop-btn">↑↑</a>
+        </div>
+	  </div>
+      <div class="pure-u-1-24 pure-u-md-1-6"></div>
+</div>
+
+
+<script src="http://zwodahs.me/js/jquery.min.js" type="text/javascript"></script>
+<script src="http://zwodahs.me/js/jquery.timeago.js" type="text/javascript"></script>
+<script type="text/javascript">
+  $(function(){
+    $("time.timeago").timeago();
+  })
+  $("#toggle-btn").click(function(){
+    $("#toggle-content").toggle();
+    if($(this).html() === "☰") {
+        $(this).html("X")
+    } else {
+        $(this).html("☰")
+    }
+  });
+  $(window).resize(function(){
+    if(window.innerWidth > 768) {
+      $(".desktop").removeAttr("style");
+    }
+  });
+</script>
+
+</body>
+</html>
+

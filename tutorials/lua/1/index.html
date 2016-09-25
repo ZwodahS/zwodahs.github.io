@@ -1,0 +1,297 @@
+<html lang="en">
+<head>
+
+  
+  <meta charset="utf-8">
+  <title>Setting Up</title>
+  <meta name="description" content="Setting Up">
+  <meta name="author" content="">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="http://zwodahs.me/css/fonts.css">
+  
+  
+  <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+  
+
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css">
+
+  <link rel="stylesheet" href="http://zwodahs.me/css/custom.css">
+
+  
+  
+  <link rel="stylesheet" href="http://zwodahs.me/highlight/styles/default.css">
+  
+  <script src="http://zwodahs.me/highlight/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+</head>
+<body>
+
+<div class="header pure-g">
+    <div class="pure-u-1-24 pure-u-md-5-24"></div>
+    <div class="pure-u-11-12 pure-u-md-5-8">
+        
+        <div class="desktop pure-menu pure-menu-horizontal nav-menu">
+            <a href="http://zwodahs.me/" class="site-title pure-menu-heading">ZwodahS</a>
+            <ul class="pure-menu-list">
+                <li class="pure-menu-item">
+                    <a href="http://zwodahs.me/links/" class="pure-menu-link">Resources</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="http://zwodahs.me/fun-projects/" class="pure-menu-link">Fun Projects</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="http://zwodahs.me/game-projects/" class="pure-menu-link">Game Projects</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="http://zwodahs.me/tutorials/" class="pure-menu-link">Tutorials</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="http://zwodahs.me/about/" class="pure-menu-link">About Me</a>
+                </li>
+            </ul>
+        </div>
+        <div class="mobile pure-menu nav-menu">
+            <a href="/" class="pure-menu-heading" id="toggle-home">ZwodahS</a>
+            <a href="#" id="toggle-btn">&#9776;</a>
+            <ul class="pure-menu-list" id="toggle-content" style="display:none;">
+                <li class="pure-menu-item">
+                    <a href="http://zwodahs.me/links/" class="pure-menu-link">Resources</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="http://zwodahs.me/fun-projects/" class="pure-menu-link">Fun Projects</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="http://zwodahs.me/game-projects/" class="pure-menu-link">Game Projects</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="http://zwodahs.me/tutorials/" class="pure-menu-link">Tutorials</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="http://zwodahs.me/about/" class="pure-menu-link">About</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="pure-u-1-24 pure-u-md-1-6"></div>
+</div>
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-md-5-24"></div>
+	<div class="pure-u-11-12 pure-u-md-5-8">
+        <div class="post">
+
+            <div class="post-title">
+                <p class="footnote">
+                    
+                        <time class="">2016-09-25</time>
+                    
+                    
+                </p>
+                <h1>Setting Up</h1>
+            </div>
+            
+            <hr />
+            <div class="post-content">
+                <p>This tutorial is to set up the lua environment in our C++ program and make sure we can get it to run.
+Let me first show you the full code.</p>
+
+<pre><code>/**
+ * main.cpp
+ */
+#include &lt;lua.hpp&gt;
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+/**
+ * A Simple function to load and run the file. Instead of just using luaL_dofile, I have split them up to print the proper error message.
+ */
+bool load(lua_State* L, const std::string&amp; filename)
+{
+    int status = luaL_loadfile(L, filename.c_str());                            // load the Lua file and put the data on the stack
+    if(status != LUA_OK)                                                        // check if the file is loaded properly
+    {
+        std::cout &lt;&lt; &quot;[C++] error loading script&quot; &lt;&lt; std::endl;
+        return false;
+    }
+    std::cout &lt;&lt; &quot;[C++] script loaded&quot; &lt;&lt; std::endl;
+
+    int result = lua_pcall(L, 0, LUA_MULTRET, 0);                               // run the loaded file.
+    if(result != LUA_OK)
+    {
+        std::cout &lt;&lt; &quot;[C++] Could not run the script.&quot; &lt;&lt; std::endl;
+        return false;
+    }
+    return true;
+}
+/**
+ * The method to set up lua
+ */
+lua_State* setupLuaState()
+{
+    lua_State* L = luaL_newstate();                                             // create a new Lua state/environment
+    //// load the necessary libraries ////
+    std::vector&lt;luaL_Reg&gt; lualibs =
+        { {&quot;base&quot;, luaopen_base} ,
+          {&quot;io&quot;, luaopen_io} };
+    for(auto&amp; it : lualibs)
+    {
+        luaL_requiref(L, it.name, it.func, true);                               // load the required lua libs and store it in the global space.
+        lua_settop(L, 0);                                                       // clear the stack in case there is some remaining stuffs there.
+    }
+    //////////////////////////////////////
+    return L;
+}
+void cleanup(lua_State* L)
+{
+    lua_close(L);
+}
+
+int main(int argc, char* argv[])
+{
+    lua_State* L = setupLuaState();
+    load(L, &quot;test.lua&quot;);
+    cleanup(L);
+    return 0;
+}
+</code></pre>
+
+<pre><code>-- just print hello world
+print (&quot;[LUA] hello world&quot;);
+</code></pre>
+
+<p>This is a simple example where we just load the lua script and print hello world from the lua.
+The main method is split up into 3 parts.
+We will go through them part by part.</p>
+
+<p>The first part creates the luaState.</p>
+
+<pre><code>lua_State* setupLuaState()
+{
+    lua_State* L = luaL_newstate();                                             // create a new Lua state/environment
+    //// load the necessary libraries ////
+    std::vector&lt;luaL_Reg&gt; lualibs =
+        { {&quot;base&quot;, luaopen_base} ,
+          {&quot;io&quot;, luaopen_io} };
+    for(auto&amp; it : lualibs)
+    {
+        luaL_requiref(L, it.name, it.func, true);                               // load the required lua libs and store it in the global space.
+        lua_settop(L, 0);                                                       // clear the stack in case there is some remaining stuffs there.
+    }
+    //////////////////////////////////////
+    return L;
+}
+</code></pre>
+
+<p>The first line of the method creates the lua_State object.
+The next few lines are optional.
+They load some basic libraries into the lua environment.
+I like to think of the lua_State as a virtual machine that run inside the C++ program.</p>
+
+<p>We will also clear the stack in case there is any things left on it.
+I will cover the stack in more details later.</p>
+
+<p>The next part is to load and run the script.</p>
+
+<pre><code>bool load(lua_State* L, const std::string&amp; filename)
+{
+    int status = luaL_loadfile(L, filename.c_str());                            // load the Lua file and put the data on the stack
+    if(status != LUA_OK)                                                        // check if the file is loaded properly
+    {
+        std::cout &lt;&lt; &quot;[C++] error loading script&quot; &lt;&lt; std::endl;
+        return false;
+    }
+    std::cout &lt;&lt; &quot;[C++] script loaded&quot; &lt;&lt; std::endl;
+
+    int result = lua_pcall(L, 0, LUA_MULTRET, 0);                               // run the loaded file.
+    if(result != LUA_OK)
+    {
+        std::cout &lt;&lt; &quot;[C++] Could not run the script.&quot; &lt;&lt; std::endl;
+        return false;
+    }
+    return true;
+}
+</code></pre>
+
+<p>This is done using luaL_loadfile and lua_pcall.
+In most other tutorials, I have see them use luaL_dofile instead.
+They are the same, since luaL_dofile is a macro defined in the lua.hpp.
+I have splitted them here to allow me to know at which state it fails and print the correct error messages.</p>
+
+<p>After we are done with all the things, we need to clean up.</p>
+
+<pre><code>void cleanup(lua_State* L)
+{
+    lua_close(L);
+}
+</code></pre>
+
+<p>To cleanup, we will just need to close the state.</p>
+
+<p>I don&rsquo;t want to go into detail in this tutorial, since there is nothing interesting and most of these information can be found in the lua documentation.</p>
+
+<p>This part of the tutorial is just to ensure that things works on your computer and you can start doing the fun stuffs instead of worrying about the configuration.
+The code for this part of the tutorial can be found <a href="https://github.com/ZwodahS/lua-examples/tree/master/tutorial/1">here</a></p>
+
+<p><a href="/tutorials/lua">[Tutorial Index]</a> <a href="/tutorials/lua/2">[Running a Lua function from C++ &gt;&gt;]</a></p>
+
+            </div>
+        </div>
+	</div>
+    <div class="pure-u-1-24 pure-u-md-1-6"></div>
+</div>
+
+<div class="footer pure-g">
+    <div class="pure-u-1-24 pure-u-md-5-24"></div>
+    <div class="pure-u-11-12 pure-u-md-5-8">
+        <div class="pure-menu pure-menu-horizontal footer-content">
+            <ul>
+                <li class="pure-menu-heading" id="foot-name">:</li>
+
+                
+
+                
+
+                
+
+                
+
+                
+
+            </ul>
+            <a href="#" class="pure-menu-heading pull-right" id="gototop-btn">↑↑</a>
+        </div>
+	  </div>
+      <div class="pure-u-1-24 pure-u-md-1-6"></div>
+</div>
+
+
+<script src="http://zwodahs.me/js/jquery.min.js" type="text/javascript"></script>
+<script src="http://zwodahs.me/js/jquery.timeago.js" type="text/javascript"></script>
+<script type="text/javascript">
+  $(function(){
+    $("time.timeago").timeago();
+  })
+  $("#toggle-btn").click(function(){
+    $("#toggle-content").toggle();
+    if($(this).html() === "☰") {
+        $(this).html("X")
+    } else {
+        $(this).html("☰")
+    }
+  });
+  $(window).resize(function(){
+    if(window.innerWidth > 768) {
+      $(".desktop").removeAttr("style");
+    }
+  });
+</script>
+
+</body>
+</html>
+

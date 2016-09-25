@@ -1,0 +1,555 @@
+<html lang="en">
+<head>
+
+  
+  <meta charset="utf-8">
+  <title>My Tooling and Workflow</title>
+  <meta name="description" content="My Tooling and Workflow">
+  <meta name="author" content="">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="http://zwodahs.me/css/fonts.css">
+  
+  
+  <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+  
+
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css">
+
+  <link rel="stylesheet" href="http://zwodahs.me/css/custom.css">
+
+  
+  
+  <link rel="stylesheet" href="http://zwodahs.me/highlight/styles/default.css">
+  
+  <script src="http://zwodahs.me/highlight/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+</head>
+<body>
+
+<div class="header pure-g">
+    <div class="pure-u-1-24 pure-u-md-5-24"></div>
+    <div class="pure-u-11-12 pure-u-md-5-8">
+        
+        <div class="desktop pure-menu pure-menu-horizontal nav-menu">
+            <a href="http://zwodahs.me/" class="site-title pure-menu-heading">ZwodahS</a>
+            <ul class="pure-menu-list">
+                <li class="pure-menu-item">
+                    <a href="http://zwodahs.me/links/" class="pure-menu-link">Resources</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="http://zwodahs.me/fun-projects/" class="pure-menu-link">Fun Projects</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="http://zwodahs.me/game-projects/" class="pure-menu-link">Game Projects</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="http://zwodahs.me/tutorials/" class="pure-menu-link">Tutorials</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="http://zwodahs.me/about/" class="pure-menu-link">About Me</a>
+                </li>
+            </ul>
+        </div>
+        <div class="mobile pure-menu nav-menu">
+            <a href="/" class="pure-menu-heading" id="toggle-home">ZwodahS</a>
+            <a href="#" id="toggle-btn">&#9776;</a>
+            <ul class="pure-menu-list" id="toggle-content" style="display:none;">
+                <li class="pure-menu-item">
+                    <a href="http://zwodahs.me/links/" class="pure-menu-link">Resources</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="http://zwodahs.me/fun-projects/" class="pure-menu-link">Fun Projects</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="http://zwodahs.me/game-projects/" class="pure-menu-link">Game Projects</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="http://zwodahs.me/tutorials/" class="pure-menu-link">Tutorials</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="http://zwodahs.me/about/" class="pure-menu-link">About</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="pure-u-1-24 pure-u-md-1-6"></div>
+</div>
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-md-5-24"></div>
+	<div class="pure-u-11-12 pure-u-md-5-8">
+        <div class="post">
+
+            <div class="post-title">
+                <p class="footnote">
+                    
+                    
+                </p>
+                <h1>My Tooling and Workflow</h1>
+            </div>
+            
+            <hr />
+            <div class="post-content">
+                
+
+<h1 id="history">History</h1>
+
+<p>I only started working on the commandline around 2012, mainly because I need to edit python scripts on the server.
+At this stage, I didn&rsquo;t really dive into vim plugins and stuff, I just used the default one.
+It was only until when I started making game in C++ that I started really upgrade my tooling and build my vimfiles and dotfiles.
+Around 2014, I started working more on the remote server and I added tmux to my tooling.
+Then around mid 2016, I switched to neovim.</p>
+
+<h1 id="list-of-tools">List of tools</h1>
+
+<ol>
+<li>Bash</li>
+<li>Tmux</li>
+<li>Neovim</li>
+</ol>
+
+<p>tl;dr for people who are already in the commandline, here are my <a href="https://github.com/ZwodahS/dotfiles">dotfiles</a> and <a href="https://github.com/ZwodahS/vimfiles">vimfiles</a>.</p>
+
+<h2 id="bash">Bash</h2>
+
+<p>Bash is my choice of shell mainly because it was the first that I encountered and used.
+I tried zsh but I realized that I don&rsquo;t really want to be installing it on every machine that I go to, so I decided to stick with bash.</p>
+
+<p>When I first saw the command line, it was way back when I started programming.
+I couldn&rsquo;t understand why anyone would use the command line when there is GUI.
+I couldn&rsquo;t be more wrong; now I wonder why anyone would use GUI when command line is way faster.</p>
+
+<h3 id="my-setup">My setup</h3>
+
+<p>There isn&rsquo;t much set-up specifically for bash except for simple alias like <code>g</code> for <code>git</code> and <code>l</code> for <code>ls -lGh</code>.
+Yes, one letter alias.
+It is simple, the less you need to type the faster you get.</p>
+
+<p>My <code>bash_profile</code> is a modular set up.
+It source various other files from the repo.
+Many of the stuffs are also turned on and off by checking if certain programs are installed.
+It also checks which OS i am in and alias accordingly</p>
+
+<p>I also have a nice <code>setup.sh</code> that set up everything once I clone my dotfiles.
+This include linking all my dotfiles, like <code>.tmux.conf</code>, <code>.git(ignore|config)</code>, and also cloning my vimfiles and setting it up.
+So for every new machine I go to, I will just need to clone my dotfiles and run the setup script to set everything up.</p>
+
+<h3 id="how">How ?</h3>
+
+<p>The easiest way to start using bash is to replace your daily workflow of finder with the basic commands like <code>cd, ls, cat</code> etc.
+This will get you used to the command line without requiring you to do too much.
+Use <code>open -R</code> to reveal the folder in the finder if you need.
+After a while, you also should start thinking about making your bash looks nice and useful.</p>
+
+<h4 id="1-start-with-a-simple-bash-profile">1. Start with a simple <code>bash_profile</code></h4>
+
+<p>Start with a mindset that you hate typing.
+Create alias basic stuffs like <code>ls -l</code> to <code>ll</code> or aliasing it to even just <code>l</code>.</p>
+
+<h4 id="2-learn-all-the-shortcuts">2. Learn all the shortcuts.</h4>
+
+<p>There are a few good shortcuts to learn.
+I am still trying to get some of them into muscle memory.</p>
+
+<ol>
+<li>Ctrl-f Ctrl-b : forward one char and backward one char.
+Why this when we can just use the arrow keys ?
+Arrow keys are kind of out of reach if you are using a normal keyboard.
+It is more natural for me to avoid arrow key since I am already doing that for vim.</li>
+<li>Alt-f Alt-b : forward/backward by word.</li>
+<li>Ctrl-p Ctrl-n : previous command and next command.
+This replaced the up and down arrow key. :D</li>
+<li>Ctrl-a Ctrl-e : go to start of line, go to end of line
+This is one that I haven&rsquo;t got used to, but am actively trying to.</li>
+<li>Ctrl-r Ctrl-s : reverse/forward search for history</li>
+<li>Ctrl-w : delete word</li>
+</ol>
+
+<p>While you are at it, change your capslock to ctrl, make your life easier on the terminal and a better person on the internet.</p>
+
+<p>There are more shortcuts, but you should not try to memorize all of them.
+Instead, get them into your muscle memory one by one.</p>
+
+<h4 id="3-learn-bash-scripting">3. Learn bash scripting.</h4>
+
+<p>If you need to do something, try to do it in bash, using all the other command line tools like cat, grep etc.
+Some automation in your terminal can really go a long way.</p>
+
+<p>For example, need to manually extract stuffs from a text file ?
+Use grep, cut, to print them out.</p>
+
+<p>Bash scripting is not about learning the syntax of bash, but what are the tools available and how to combine them with pipes to do your task.</p>
+
+<h4 id="4-share-and-learn">4. Share and learn</h4>
+
+<p>Share your dotfiles to the world (excluding all the sensitive information) and read other people dotfiles to learn new tricks.
+You can find mine <a href="https://github.com/ZwodahS/dotfiles">here</a>.</p>
+
+<p>One of my favorite command I have in my dotfiles is <code>h</code>, which is a function that allow me to find previous commands using grep
+For example, <code>h for curl</code> will find me the for loop that I used previously to curl multiple url.
+It can be improved further but it works for now.</p>
+
+<h2 id="tmux">Tmux</h2>
+
+<p>Before I added tmux into my workflow, I was already using vim and command line for many of my workflow.
+I ended up having tons of tabs on my iTerm and it works.
+However, this becomes trickier when I am in the remote server, and this is where tmux was introduced to me.
+Tmux really improved my life a lot.</p>
+
+<h3 id="what-is-tmux">What is Tmux</h3>
+
+<p>Tmux is a terminal multiplexer.
+It allows you to have tabs and splits in a single session.
+Why is this useful when you can just open multiple tabs/splits in iTerm/Terminal ?</p>
+
+<p>If you are working on remote, it is really more convenient to have just a single session on the server.
+On top of that, it allows you to copy text from one tab/window to another, without ever lifting your finger to use the mouse/trackpad.
+I really hate using trackpad.</p>
+
+<p>The most important reason why tmux is useful, is that the splits and tabs are kept alive, even if you are disconnected from the remote.
+I can&rsquo;t emphasize how important this is.
+It reduce the pain when you get disconnected from the server and prevent you from losing work.
+In addtional to that, you can work on different machines and still get back the same tabs and windows.</p>
+
+<h3 id="how-1">How ?</h3>
+
+<p>So how to get started in tmux ?
+I would recommend the following steps.</p>
+
+<h4 id="1-choose-a-binding">1. Choose a binding.</h4>
+
+<p>The default key for tmux is Ctrl-B, but I use Ctrl-Q because it is easier to press.
+You don&rsquo;t have to choose the same, just pick one, but preferably one that you can reach easily.
+You will be using it a lot.</p>
+
+<h4 id="2-unbind-all-commands">2. Unbind all commands</h4>
+
+<p>This can be achieved by putting <code>unbind-key -a</code> at the start of .tmux.conf.
+You can look at my <a href="https://github.com/ZwodahS/dotfiles/blob/master/tmuxconf">tmux.conf</a> to see how I do it.</p>
+
+<p>Why should you unbind all commands ?
+This allow you to build the configuration slowly from scratch and only keep what you need.
+However, there are few of them that are important and need to be binded first.</p>
+
+<ol>
+<li>detach - allow you to exit tmux without closing all the tabs</li>
+<li>kill-window - kill the window that you are in.</li>
+</ol>
+
+<p>That is all you need to ensure that you don&rsquo;t get stuck in your tmux.
+I binded detach to &rsquo;d&rsquo; and kill-window to &lsquo;z&rsquo;.
+The logic for choosing &lsquo;z&rsquo; to make it hard to reach so I don&rsquo;t accidentally kill my window.</p>
+
+<h4 id="3-bind-commands-that-are-useful-to-you">3. Bind commands that are useful to you.</h4>
+
+<p>To look at the full list of commands, you can use <code>tmux list-commands</code>.
+From there, you can see all the available commands in tmux.
+If you are unsure of how to bind the keys, you can look at my <a href="https://github.com/ZwodahS/dotfiles/blob/master/tmuxconf">.tmux-conf</a> and see how it is done.</p>
+
+<p>The first few commands that might be useful are window splitting, new tabs, window resizing and navigation between the tabs and windows.</p>
+
+<h4 id="4-share-your-tmux-conf-and-learn-from-others">4. Share your .tmux.conf and learn from others.</h4>
+
+<p>When you are done configuring, it is a good idea to commit to a dotfile folder on github and let other people look and learn from it.
+You should also look at other conf file to see ideas that you can use.</p>
+
+<h3 id="tips">Tips</h3>
+
+<p>One tip that might be useful when starting off is to have a binding that reload tmux conf, so you don&rsquo;t have to restart tmux everytime you change something.
+It can be achieved by binding a key to  <code>source-file ~/.tmux.conf</code>.
+As usual, look at my <a href="https://github.com/ZwodahS/dotfiles/blob/master/tmuxconf">.tmux.conf</a> to see what I mean.</p>
+
+<h2 id="neo-vim">(Neo)Vim</h2>
+
+<p>I can talk about vim for hours.
+It is probably one of the best thing I found since programming.</p>
+
+<p>I would recommend Emacs if modal editing is not your cup of tea, but do give modal editing a try.
+It really change how you think of editing, and really, the only drawback I see, is that I can no longer use other IDEs.</p>
+
+<p>Neovim is a heavily refactored version of vim, where support for more obscure OS are dropped and many other goodies.
+I mainly use neovim and use vim only if neovim is not available.
+My vimfiles is set up to be used for both.</p>
+
+<h3 id="what-is-vim">What is Vim</h3>
+
+<p>Vim is a highly customizable editor that is available on the command line.
+If you are working on OSX or Linux, then it should already be available in your terminal.</p>
+
+<p>It is a really different beast compare to most of the other editors.
+For one, the modal editing will throw people off.
+When I first encountered vim, I wondered what this piece of shit is, and like most users, I don&rsquo;t even know how to quit.
+It is frustrating and I can&rsquo;t comprehend why anyone would use it.
+That was until I see what a power user can do with vim.</p>
+
+<h3 id="why-vim">Why Vim</h3>
+
+<p>Different people have different reasons why they switch to vim or choose vim in the first place.
+Some people grow up with it, and didn&rsquo;t have to make the switch, others tried IDEs and various editors and realized that vim is the one.
+I belong to the latter.</p>
+
+<p>So why do I continue to use vim even though many other &ldquo;better&rdquo; editors/IDE exists ?</p>
+
+<h4 id="no-distraction">No Distraction</h4>
+
+<p>Vim has a clean UI.
+When you run it, you only see your code any nothing else.
+Most of the other editor fills your screen with unncessary windows that leaves only a small part of the screen for your code.</p>
+
+<h4 id="modal-editing">Modal Editing</h4>
+
+<p>This is one of the things that once you get used to, you will never leave.
+In vim, you have 3 modes; Visual, Normal and Insert.
+In general,</p>
+
+<ul>
+<li>Visual - Selecting stuffs</li>
+<li>Normal - Moving around or applying commands</li>
+<li>Insert - Adding texts.</li>
+</ul>
+
+<p>The separation of modes allow you to think what you are trying to do and also allows for more specific key bindings for various modes.
+It is so good that someone needs it on Emacs :D and created Evil.</p>
+
+<h4 id="key-bindings">Key bindings</h4>
+
+<p>Normal IDEs requires tons of key bindings in the form of ctrl+alt+shift.
+Who use them ? seriously.. who ?
+Those are so HARD to use.</p>
+
+<p>In Vim, you can use sequence of keystroke instead of 3 to 4 keys combinations.
+Pressing 2 keys one after another is definitely better than trying to press Ctrl-Shift ??.</p>
+
+<p>On top of that, we have keybindings for everything.
+For example <code>va&quot;</code> and <code>vi&quot;</code>, which literally means visually select everything around/inside <code>&quot;</code>
+If you want to jsut copy the text, <code>ya&quot;</code> and <code>yi&quot;</code>(yank) works as well.
+Of course, there are also <code>da&quot;</code>, <code>di&quot;</code>(delete), <code>ca&quot;</code>(change) .. okay you get the idea.</p>
+
+<p>Some vim users also like to change their caplocks to esc, because esc is the primary way to change back to normal mode.
+However, I choose to bind my caplocks to ctrl instead.
+This is because I also use bash/tmux a lot and having Ctrl+? available is really handy.
+Instead of using esc, I am using Ctrl+[ to escape.
+It seems hard at first but I got used to it within 2 weeks.</p>
+
+<h4 id="no-mouse-trackpad">No Mouse/Trackpad</h4>
+
+<p>Having to move to use the mouse or trackpad to do something really sucks.
+When using vim, my fingers is always on the keyboard.
+This means that there is little to no break of flow when I am programming.</p>
+
+<h3 id="plugins">Plugins</h3>
+
+<p>Having said all the reasons why I choose vim, the default vim isn&rsquo;t enough(sometimes).
+You will need to tweak it to make it your own and become one with it :D.</p>
+
+<p>Sharing my configuration doesn&rsquo;t make sense, because everyone have a different way of doing things.
+Instead, you should only look at my <a href="https://github.com/ZwodahS/vimfiles">vimfiles</a> after you are done learning the basic.
+They are heavily commented with the intention for people to learn/steal from it.</p>
+
+<p>Instead, I will recommend some plugins that I think are worth mentioning and you should check them out after you started using vim on a daily basis.
+I chose this list because most people who come from IDE/GUI editors will always ask &ldquo;but do you have this ?&rdquo;.</p>
+
+<h4 id="fuzzy-file-finder-ctrlp">Fuzzy File Finder - CtrlP</h4>
+
+<p>There are many plugins for this, but my choice is <a href="http://vimawesome.com/plugin/ctrlp-vim-state-of-grace">CtrlP</a>.
+It is the first that I encountered, and there is no need to replace it at the moment.
+Without this, opening a file involve manually typing the exact filename or using a file navigator.
+This is a MUST have.</p>
+
+<h4 id="files-folder-navigation">Files/Folder Navigation</h4>
+
+<p><a href="http://vimawesome.com/plugin/the-nerd-tree">Nerdtree</a> is my choice for this.
+Some people choose to use the builtin in vim but I think this provide a better view.
+I don&rsquo;t use this as much now, especially after I started using CtrlP.
+I also started using Tmux + Bash to browse my files, so it might be time to let NerdTree go.
+Nevertheless, worth a mention.</p>
+
+<h4 id="undo-tree">Undo Tree</h4>
+
+<p>Ever undo so much that sometimes you wish you can go back to what you had undo ?
+Well, <a href="http://vimawesome.com/plugin/gundo">Gundo</a> to the rescue.
+To be honest, you don&rsquo;t need this plugin to find the edit that you want, since vim already provides the functionality.
+You will just need to read the help file provided by vim.
+Gundo just provides a easy way to visualize your undo tree and find the edit you want.</p>
+
+<p>This is the one plugin that I would ask all IDE users, &ldquo;do you have this ?&rdquo;</p>
+
+<h4 id="snippets">Snippets</h4>
+
+<p>Snippets is something that I only started using recently.
+I can&rsquo;t say much about it yet as I am still trying to get it into my muscle memory.
+I used to use <a href="http://vimawesome.com/plugin/vim-snippets">vim-snippets</a> but later changed to <a href="http://vimawesome.com/plugin/ultisnips-forever-and-always">UltiSnips</a>.
+This main reason for the change is to allow it to work with my autocomplete engine.</p>
+
+<h4 id="autocomplete">AutoComplete</h4>
+
+<p>Vim default autocomplete was good enough for me for at least 2 years, before I found <a href="http://vimawesome.com/plugin/youcompleteme">YouCompleteMe</a>.
+It also works well with my snippets plugins, so that is a double win.
+After switching to neovim, I moved to <a href="http://vimawesome.com/?q=deoplete">deoplete</a>.</p>
+
+<h4 id="motion">Motion</h4>
+
+<p>This is the last in the list, but will confuse anyone who don&rsquo;t use vim and are new to vim.
+I will not go into details but <a href="http://vimawesome.com/plugin/easymotion">easymotion</a> will be really useful once you get used to vim&rsquo;s basic motion keys.</p>
+
+<h4 id="others">Others</h4>
+
+<p>There are too many plugins to name, just look at my <a href="https://github.com/ZwodahS/vimfiles">vimfiles</a> :D.</p>
+
+<h3 id="learning-vim">Learning Vim</h3>
+
+<p>Many people have given their advices on how to learn vim.
+I will also give mine as well.</p>
+
+<h4 id="1-decide-that-you-really-need-vim">1. Decide that you really need vim.</h4>
+
+<p>I can&rsquo;t help you with this.
+The is really no reason to switch to vim if you are okay with your existing tool, but if you want to switch, you need to at least do it for 2 weeks before you can be more productive in vim.</p>
+
+<h4 id="2-start-small-really-small">2. Start small, really small</h4>
+
+<p>Don&rsquo;t expect to be good with vim overnight.
+Start small, really small.
+If you haven&rsquo;t try vim before, type <code>vimtutor</code> in your shell.
+Work with vimtutor for about a week or until you can go through the whole vimtutor in 5 minutes.</p>
+
+<p>Start editing simple text with it.
+Don&rsquo;t try to do actual work with it until you are really comfortable.
+The frustration of not being able to finish your work will make your quit.
+Try <a href="http://vim-adventures.com/">vim-adventures</a> if you need to.</p>
+
+<h4 id="3-don-t-use-the-mouse">3. Don&rsquo;t use the mouse</h4>
+
+<p>Don&rsquo;t, just don&rsquo;t, even if that makes you faster (in the short term).</p>
+
+<h4 id="4-don-t-use-the-arrow-key-ever-almost">4. Don&rsquo;t use the arrow key, ever (almost).</h4>
+
+<p>Same as 3, just don&rsquo;t.. well, except if you bind something to it :P.
+For me, I have rebind-ed my arrow keys to resizing my splits.</p>
+
+<p>The important thing to remember is muscle memory.
+Once you build a certain muscle memory (like using the arrow keys or mouse), it will be really hard to change.</p>
+
+<h4 id="5-start-with-a-minimum-set-of-bindings">5. Start with a minimum set of bindings.</h4>
+
+<p>Don&rsquo;t search online for vimrc or dotfiles for you to start with.
+The worse thing you can do is to download a pre-bundled vimrc, with tons of vim mapping and plugins that you (probably) will never use in the first 6 months.
+Start from scratch, and slowly build your muscle memory and vim bindings.</p>
+
+<h4 id="6-build-your-muscle-memory">6. Build your muscle memory.</h4>
+
+<p>Have I mention this ?
+Yes build your muscle memory.
+At the start, you may need to think about how to do certain task, like moving around.
+But after a while, it will become natural and your mind will just think of the task and your fingers will automatically do it.
+Get it to a point where you don&rsquo;t remember which key does what you want but you are still able to do it once you are on the keyboard.
+I always get confused with j and k when someone ask me which key to move up. I only know it by muscle.</p>
+
+<h4 id="7-steal-vimrc">7. Steal vimrc.</h4>
+
+<p>This is Step 7.
+Do it after you done 1-6.
+Don&rsquo;t skip ahead.
+Read Step 5 if you need to.
+But once you reach here, go ahead.
+Steal vimrc, not the whole of it, but part of it.
+Find out what people are doing and what plugins they are using.
+You may find interesting functions that they wrote but is not a plugin.
+If you do steal something, do leave a link in your vimrc so we can always find the source.</p>
+
+<h4 id="8-keep-learning-and-upgrading">8. Keep learning and upgrading.</h4>
+
+<p>Always have one or two things that you are learning.
+Download vim cheatsheet and see what commands are available and use them.
+Once your muscle learn it, start learning something new.</p>
+
+<p>Upgrade your vimrc. There is no reason why you should stop.</p>
+
+<h4 id="9-share-your-vimfiles">9. Share your vimfiles.</h4>
+
+<p>Share your vimfiles with everyone.
+Mine is <a href="https://github.com/ZwodahS/vimfiles">here</a>, and it is commented and organised for people to steal.
+Let me know if you have a nice plugin/config/function that I can steal.</p>
+
+<h1 id="tl-dr">Tl;Dr</h1>
+
+<p>Learn to</p>
+
+<ol>
+<li>Hate typing</li>
+<li>Hate mouse</li>
+<li>Hate arrow keys.</li>
+<li>Hate escape+meta+alt+control+shift.</li>
+<li>Keep upgrading.</li>
+<li>Share.</li>
+</ol>
+
+<h1 id="summary">Summary</h1>
+
+<p>Before I end, here is a <a href="https://www.youtube.com/watch?v=5r6yzFEXajQ">video</a> of Tmux+Vim by someone else, who is quite similar to mine.</p>
+
+<p>I will continue to update this post with more stuffs when I upgrade my workflow.
+Happy hacking.</p>
+
+            </div>
+        </div>
+	</div>
+    <div class="pure-u-1-24 pure-u-md-1-6"></div>
+</div>
+
+<div class="footer pure-g">
+    <div class="pure-u-1-24 pure-u-md-5-24"></div>
+    <div class="pure-u-11-12 pure-u-md-5-8">
+        <div class="pure-menu pure-menu-horizontal footer-content">
+            <ul>
+                <li class="pure-menu-heading" id="foot-name">:</li>
+
+                
+
+                
+
+                
+
+                
+
+                
+
+            </ul>
+            <a href="#" class="pure-menu-heading pull-right" id="gototop-btn">↑↑</a>
+        </div>
+	  </div>
+      <div class="pure-u-1-24 pure-u-md-1-6"></div>
+</div>
+
+
+<script src="http://zwodahs.me/js/jquery.min.js" type="text/javascript"></script>
+<script src="http://zwodahs.me/js/jquery.timeago.js" type="text/javascript"></script>
+<script type="text/javascript">
+  $(function(){
+    $("time.timeago").timeago();
+  })
+  $("#toggle-btn").click(function(){
+    $("#toggle-content").toggle();
+    if($(this).html() === "☰") {
+        $(this).html("X")
+    } else {
+        $(this).html("☰")
+    }
+  });
+  $(window).resize(function(){
+    if(window.innerWidth > 768) {
+      $(".desktop").removeAttr("style");
+    }
+  });
+</script>
+
+</body>
+</html>
+

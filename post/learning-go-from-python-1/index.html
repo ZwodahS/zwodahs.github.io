@@ -1,0 +1,330 @@
+<html lang="en">
+<head>
+
+  
+  <meta charset="utf-8">
+  <title>Learning Golang from Python (I) - understanding imports and packages</title>
+  <meta name="description" content="Learning Golang from Python (I) - understanding imports and packages">
+  <meta name="author" content="">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="http://zwodahs.me/css/fonts.css">
+  
+  
+  <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+  
+
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css">
+
+  <link rel="stylesheet" href="http://zwodahs.me/css/custom.css">
+
+  
+  
+  <link rel="stylesheet" href="http://zwodahs.me/highlight/styles/default.css">
+  
+  <script src="http://zwodahs.me/highlight/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+</head>
+<body>
+
+<div class="header pure-g">
+    <div class="pure-u-1-24 pure-u-md-5-24"></div>
+    <div class="pure-u-11-12 pure-u-md-5-8">
+        
+        <div class="desktop pure-menu pure-menu-horizontal nav-menu">
+            <a href="http://zwodahs.me/" class="site-title pure-menu-heading">ZwodahS</a>
+            <ul class="pure-menu-list">
+                <li class="pure-menu-item">
+                    <a href="http://zwodahs.me/links/" class="pure-menu-link">Resources</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="http://zwodahs.me/fun-projects/" class="pure-menu-link">Fun Projects</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="http://zwodahs.me/game-projects/" class="pure-menu-link">Game Projects</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="http://zwodahs.me/tutorials/" class="pure-menu-link">Tutorials</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="http://zwodahs.me/about/" class="pure-menu-link">About Me</a>
+                </li>
+            </ul>
+        </div>
+        <div class="mobile pure-menu nav-menu">
+            <a href="/" class="pure-menu-heading" id="toggle-home">ZwodahS</a>
+            <a href="#" id="toggle-btn">&#9776;</a>
+            <ul class="pure-menu-list" id="toggle-content" style="display:none;">
+                <li class="pure-menu-item">
+                    <a href="http://zwodahs.me/links/" class="pure-menu-link">Resources</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="http://zwodahs.me/fun-projects/" class="pure-menu-link">Fun Projects</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="http://zwodahs.me/game-projects/" class="pure-menu-link">Game Projects</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="http://zwodahs.me/tutorials/" class="pure-menu-link">Tutorials</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="http://zwodahs.me/about/" class="pure-menu-link">About</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="pure-u-1-24 pure-u-md-1-6"></div>
+</div>
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-md-5-24"></div>
+	<div class="pure-u-11-12 pure-u-md-5-8">
+        <div class="post">
+
+            <div class="post-title">
+                <p class="footnote">
+                    
+                        <time class="">2016-10-08</time>
+                    
+                    
+                </p>
+                <h1>Learning Golang from Python (I) - understanding imports and packages</h1>
+            </div>
+            
+                <p style="font-style: italic">
+                Please note that this post is totally outdated as I tried to make go work in the same way as python. The information here is still valid, but do not use this method to structure your app.
+                </p>
+            
+            <hr />
+            <div class="post-content">
+                
+
+<p>The first problem when trying to learn golang that I encountered is wrapping my head around how packages and import work in golang.
+Here is what I discovered and hope that others can benefit from it.</p>
+
+<p>Let&rsquo;s start 3 files that we want to migrate from python to golang</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#999;font-style:italic"># hello_world.py</span>
+<span style="color:#6ab825;font-weight:bold">import</span> <span style="color:#447fcf">world</span>
+<span style="color:#6ab825;font-weight:bold">import</span> <span style="color:#447fcf">lib.adder</span>
+
+<span style="color:#6ab825;font-weight:bold">print</span>(<span style="color:#ed9d13"></span><span style="color:#ed9d13">&#34;Hello {0}&#34;</span>.format(world.world()))
+<span style="color:#6ab825;font-weight:bold">print</span>(<span style="color:#ed9d13"></span><span style="color:#ed9d13">&#34;1 + 1 = {0}&#34;</span>.format(lib.adder.add(<span style="color:#3677a9">1</span>, <span style="color:#3677a9">1</span>)))</code></pre></div><div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#999;font-style:italic"># world.py</span>
+<span style="color:#6ab825;font-weight:bold">def</span> <span style="color:#447fcf">world</span>():
+    <span style="color:#6ab825;font-weight:bold">return</span> <span style="color:#ed9d13"></span><span style="color:#ed9d13">&#34;World&#34;</span></code></pre></div><div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#999;font-style:italic"># lib/adder.py</span>
+<span style="color:#6ab825;font-weight:bold">def</span> <span style="color:#447fcf">add</span>(x, y):
+    <span style="color:#6ab825;font-weight:bold">return</span> x + y</code></pre></div>
+<p>File structure</p>
+
+<pre><code>.
+├── hello_world.py
+├── lib
+│   └── adder.py
+└── world.py
+</code></pre>
+
+<p>In golang the code will be</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#999;font-style:italic">// main.go
+</span><span style="color:#999;font-style:italic"></span><span style="color:#6ab825;font-weight:bold">package</span> main
+<span style="color:#6ab825;font-weight:bold">import</span> (
+    <span style="color:#ed9d13">&#34;adder&#34;</span>
+    <span style="color:#ed9d13">&#34;world&#34;</span>
+    <span style="color:#ed9d13">&#34;fmt&#34;</span>
+)
+
+<span style="color:#6ab825;font-weight:bold">func</span> main() {
+    fmt.Printf(<span style="color:#ed9d13">&#34;Hello %v\n&#34;</span>, world.World()
+}</code></pre></div><div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#999;font-style:italic">// world.go
+</span><span style="color:#999;font-style:italic"></span><span style="color:#6ab825;font-weight:bold">package</span> world
+
+<span style="color:#6ab825;font-weight:bold">func</span> World() <span style="color:#6ab825;font-weight:bold">string</span> {
+    <span style="color:#6ab825;font-weight:bold">return</span> <span style="color:#ed9d13">&#34;World&#34;</span>
+}</code></pre></div><div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#999;font-style:italic">// adder.go
+</span><span style="color:#999;font-style:italic"></span><span style="color:#6ab825;font-weight:bold">package</span> adder
+<span style="color:#6ab825;font-weight:bold">func</span> add(x <span style="color:#6ab825;font-weight:bold">int</span>, y <span style="color:#6ab825;font-weight:bold">int</span>) <span style="color:#6ab825;font-weight:bold">int</span> {
+    <span style="color:#6ab825;font-weight:bold">return</span> x + y
+}</code></pre></div>
+<p>The code is pretty straight forward, the hard part is how to put them in the right place to get the import to work.</p>
+
+<h2 id="understanding-gopath">Understanding $GOPATH</h2>
+
+<p>GOPATH is the paths where golang look for libraries and modules.
+In python, it is somewhat similar to the virtualenv in python but with a few differences.
+If you come from C/C++, you can think of it as the path that you look for your headers.</p>
+
+<p>One key thing to know is that you can have multiple path in your GOPATH, separated by <code>:</code> .</p>
+
+<p>All GOPATH have 3 folders.</p>
+
+<ul>
+<li><code>bin</code> for the compiled binaries</li>
+<li><code>src</code> for the source code</li>
+<li><code>pkg</code> for the compiled libraries</li>
+</ul>
+
+<p>Most tutorial in golang will say &ldquo;treat your $GOPATH like your working directory&rdquo; and I fell into the trap thinking that this is virtualenv; it is not.</p>
+
+<p>We start by having a global $GOPATH, let use &ldquo;{HOME}/.go&rdquo;
+This is a simple way to start but as python developer, we don&rsquo;t install packages to our global space.
+The only packages that we install into global python environments are the tools that we run, like <code>virtualenv</code> and <code>pip</code> or other python command line tools.
+For packages, we have virtualenv.</p>
+
+<p>So here is what I am (probably) going to do.
+My experience with golang is limited, and thus is not the perfect solution.</p>
+
+<h2 id="folder-structure">Folder structure</h2>
+
+<p>So first, let&rsquo;s assume that adder is an external library that we are importing and world is a module that we wrote.</p>
+
+<p>Here is the final folder structure.</p>
+
+<pre><code>.
+├── lib
+│   └── src
+│       └── github.com
+│           └── zwodahs
+│               └── adder
+│                   └── adder.go
+├── main.go
+└── vendor
+    └── world
+            └── world.go
+</code></pre>
+
+<p>First, we assume that adder is at github.com:zwodahs/adder.
+To install, we just need to perform <code>go get github.com/zwodahs/adder</code>. What golang do in this situation is to find the first path in the $GOPATH and install adder to it.</p>
+
+<p>To achieve what we want, we just need to export GOPATH as <code>&quot;$(pwd)/lib:$GOPATH&quot;</code>.
+Once we set lib as the first GOPATH, the rest will be taken care by go.
+You can name <code>lib</code> anything you want, like <code>genv</code> for example.</p>
+
+<p>For <code>world.go</code>, it is a bit trickier.
+The known solution is to put <code>world</code> inside vendor.
+However, this will require the working folder to be part of a GOPATH like this</p>
+
+<pre><code>. $GOPATH (any gopath will work)
+├── pkg
+└── src
+    ├── {workingdir}
+    │   ├── lib
+    │   │   └── src
+    │   ├── main.go
+    │   └── vendor
+    │       └── world
+    │           └── world.go
+    └── other workspaces or libs ..
+</code></pre>
+
+<p>I haven&rsquo;t found a way to get around this yet.
+In python, we can put a project folder anywhere and it will work.
+Apparently, this is not the case in go, at least I haven&rsquo;t found a way.</p>
+
+<p><em>After playing around with it even more, the following is also possible</em></p>
+
+<pre><code>. $GOPATH (any gopath will work)
+├── pkg
+└── src
+    ├── workspaces
+    │   └── {workingdir}
+    │       ├── lib
+    │       │   └── src
+    │       ├── main.go
+    │       └── vendor
+    │           └── world
+    │               └── world.go
+    └── other workspaces or libs ..
+</code></pre>
+
+<h2 id="package-what">package What?</h2>
+
+<p>After I figured out where to put things, I wonder why there is a need for <code>package world</code>; so I started tinkering.</p>
+
+<p>So here is what I found.</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#999;font-style:italic">// main.go
+</span><span style="color:#999;font-style:italic"></span><span style="color:#6ab825;font-weight:bold">import</span> (
+	...
+	<span style="color:#ed9d13">&#34;world&#34;</span>
+)
+
+<span style="color:#999;font-style:italic">// world.go
+</span><span style="color:#999;font-style:italic"></span><span style="color:#6ab825;font-weight:bold">package</span> bigworld</code></pre></div>
+<p>The first thing I did was changing world to bigworld in <code>world.go</code>.
+Interestingly, it started failing at</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">    fmt.Printf(<span style="color:#ed9d13">&#34;Hello %v\n&#34;</span>, world.World()</code></pre></div>
+<p>informing me that world not defined.</p>
+
+<p>After playing around more, I realized that by changing to <code>package bigworld</code>, go imported it as <code>bigworld</code> instead of <code>world</code></p>
+
+<p>Note that you can overwrite this by using the following import statement, which is very similar to python&rsquo;s <code>import ? as ?</code>.</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#999;font-style:italic">//main.go
+</span><span style="color:#999;font-style:italic"></span><span style="color:#6ab825;font-weight:bold">import</span> (
+	world <span style="color:#ed9d13">&#34;world&#34;</span>
+)</code></pre></div>
+<p>The second thing I tried is to change the folder name to bigworld.</p>
+
+<p>As expected, we can&rsquo;t import &ldquo;world&rdquo; any more.
+We will need to import &ldquo;bigworld&rdquo;.
+<code>world.world()</code> still works, since I didn&rsquo;t change <code>package world</code> in <code>world.go</code></p>
+
+<p>That&rsquo;s all for packages for now. More golang to come.</p>
+
+            </div>
+        </div>
+	</div>
+    <div class="pure-u-1-24 pure-u-md-1-6"></div>
+</div>
+
+<div class="footer pure-g">
+    <div class="pure-u-1-24 pure-u-md-5-24"></div>
+    <div class="pure-u-11-12 pure-u-md-5-8">
+        <div class="pure-menu pure-menu-horizontal footer-content">
+            <ul>
+                <li class="pure-menu-heading" id="foot-name">:</li>
+
+                
+
+                
+
+                
+
+                
+
+                
+
+            </ul>
+            <a href="#" class="pure-menu-heading pull-right" id="gototop-btn">↑↑</a>
+        </div>
+	  </div>
+      <div class="pure-u-1-24 pure-u-md-1-6"></div>
+</div>
+
+
+<script src="http://zwodahs.me/js/jquery.min.js" type="text/javascript"></script>
+<script src="http://zwodahs.me/js/jquery.timeago.js" type="text/javascript"></script>
+<script type="text/javascript">
+  $(function(){
+    $("time.timeago").timeago();
+  })
+  $("#toggle-btn").click(function(){
+    $("#toggle-content").toggle();
+    if($(this).html() === "☰") {
+        $(this).html("X")
+    } else {
+        $(this).html("☰")
+    }
+  });
+  $(window).resize(function(){
+    if(window.innerWidth > 768) {
+      $(".desktop").removeAttr("style");
+    }
+  });
+</script>
+
+</body>
+</html>
+

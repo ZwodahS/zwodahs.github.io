@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ZwodahS</title>
+    <link>http://zwodahs.me/</link>
+    <description>Recent content on ZwodahS</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 25 Oct 2016 13:09:19 -0400</lastBuildDate>
+    
+	<atom:link href="http://zwodahs.me/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Learning Golang from Python (II) - Project structure</title>
+      <link>http://zwodahs.me/post/learning-go-from-python-2/</link>
+      <pubDate>Tue, 25 Oct 2016 13:09:19 -0400</pubDate>
+      
+      <guid>http://zwodahs.me/post/learning-go-from-python-2/</guid>
+      <description>In the previous post, I went into details on how to make golang work like python. After reading up a lot, I came to sense that the best way to learn golang is to unlearn how things are done in python and learn the way of Go.
+Workpace In python, I tend to have a nested workspace where I group various related modules together.
+├── dist ├── private │ ├── app.</description>
+    </item>
+    
+    <item>
+      <title>Learning Golang from Python (I) - understanding imports and packages</title>
+      <link>http://zwodahs.me/post/learning-go-from-python-1/</link>
+      <pubDate>Sat, 08 Oct 2016 16:32:00 +0800</pubDate>
+      
+      <guid>http://zwodahs.me/post/learning-go-from-python-1/</guid>
+      <description>The first problem when trying to learn golang that I encountered is wrapping my head around how packages and import work in golang. Here is what I discovered and hope that others can benefit from it.
+Let&amp;rsquo;s start 3 files that we want to migrate from python to golang
+# hello_world.py import world import lib.adder print(&amp;#34;Hello {0}&amp;#34;.format(world.world())) print(&amp;#34;1 + 1 = {0}&amp;#34;.format(lib.adder.add(1, 1)))# world.py def world(): return &amp;#34;World&amp;#34;# lib/adder.py def add(x, y): return x + y File structure</description>
+    </item>
+    
+    <item>
+      <title>Daily Git Workflow</title>
+      <link>http://zwodahs.me/post/daily-git-workflow/</link>
+      <pubDate>Thu, 06 Oct 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://zwodahs.me/post/daily-git-workflow/</guid>
+      <description>I would like to share a workflow that I recently got used to when using git.
+When using git, there are a few ideas that people always talk about.
+ Commit often Commit should be logical working chunk  This workflow really embraces these ideas.
+Usually my day will start with me writing code for an hour or two. During this period, I will be heavily committing my code, usually after I finish a logical part.</description>
+    </item>
+    
+    <item>
+      <title>Migration to hugo</title>
+      <link>http://zwodahs.me/post/migration/</link>
+      <pubDate>Sun, 25 Sep 2016 10:04:40 -0400</pubDate>
+      
+      <guid>http://zwodahs.me/post/migration/</guid>
+      <description>I have decided to start doing a brain dump of random knowledge into blog posts instead of writing more structure tutorials which I can&amp;rsquo;t get around to finish.
+So to &amp;ldquo;celebrate&amp;rdquo; this decision, I have moved to hugo. It took me a day to migrate my 10+ pages from jekyll and modify the default theme to have the structure that I want.
+A lot of the pages are slightly outdated, so I will be updating them soon.</description>
+    </item>
+    
+    <item>
+      <title>Accessing C&#43;&#43; objects from lua</title>
+      <link>http://zwodahs.me/tutorials/lua/5/</link>
+      <pubDate>Sun, 25 Sep 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://zwodahs.me/tutorials/lua/5/</guid>
+      <description>In this tutorial, I will cover one method that you can use to access C++ objects from Lua.
+To start, let me describe the scenario that we will be implementing.
+Assume that we are making a game and we want to calculate the damage that each unit takes in a fight. Each unit has a damage attribute and a health attribute. We will do the calculation in the Lua script but store the attributes inside the C++ objects.</description>
+    </item>
+    
+    <item>
+      <title>JPIO Query Guide</title>
+      <link>http://zwodahs.me/fun-projects/jpio/query-doc/</link>
+      <pubDate>Sun, 25 Sep 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://zwodahs.me/fun-projects/jpio/query-doc/</guid>
+      <description>This document outlines the features that I want to have in JPIO and hopefully can get to implement them. We will use an example json and use it as a reference to see what each of the command do.
+Example Json { &amp;quot;books&amp;quot; : [ { &amp;quot;id&amp;quot; : ..., &amp;quot;name&amp;quot; : ..., &amp;quot;author&amp;quot; : &amp;lt;author_id&amp;gt;, }, { &amp;quot;id&amp;quot; : ..., &amp;quot;name&amp;quot; : ..., &amp;quot;author&amp;quot; : &amp;lt;author_id&amp;gt;, }, { &amp;quot;id&amp;quot; : .</description>
+    </item>
+    
+    <item>
+      <title>Lua tutorial</title>
+      <link>http://zwodahs.me/tutorials/lua/</link>
+      <pubDate>Sun, 25 Sep 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://zwodahs.me/tutorials/lua/</guid>
+      <description>Welcome to the Lua tutorial. This is not a tutorial about Lua as a programming language; There are plenty of those around. Instead, I will assume you know the basic of lua and how Objects are modeled in Lua.
+This tutorial will cover how to write C++ programs that interact with Lua. There are many reasons why you would want to do this but usually is to allow for extension and modification without recompilation.</description>
+    </item>
+    
+    <item>
+      <title>Object-oriented in Lua</title>
+      <link>http://zwodahs.me/tutorials/lua/4/</link>
+      <pubDate>Sun, 25 Sep 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://zwodahs.me/tutorials/lua/4/</guid>
+      <description>Coming soon&amp;hellip;.
+Note: I probably will not be able to write this part, as I didn&amp;rsquo;t use Lua to create objects. If anyone have experience doing this, I can link to you =). Just let me know</description>
+    </item>
+    
+    <item>
+      <title>Packaging lua functions</title>
+      <link>http://zwodahs.me/tutorials/lua/6/</link>
+      <pubDate>Sun, 25 Sep 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://zwodahs.me/tutorials/lua/6/</guid>
+      <description>In part 2 of the tutorial, we have seen how we can call a Lua function from a C++ program. In this part of the tutorial, we will make use of that and put the functions in proper packages/modules. The main reason to do this is to make sure we don&amp;rsquo;t dirty the global namespaces, similar to why we use namespace in C++.
+First, let us look at the modification we do to the lua script.</description>
+    </item>
+    
+    <item>
+      <title>Query Specification</title>
+      <link>http://zwodahs.me/fun-projects/jpio/query-spec/</link>
+      <pubDate>Sun, 25 Sep 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://zwodahs.me/fun-projects/jpio/query-spec/</guid>
+      <description>Language Specification # Statements &amp;lt;Statement&amp;gt; :- (&amp;lt;Statement&amp;gt;) &amp;lt;Statement&amp;gt; :- &amp;lt;Statement&amp;gt;|&amp;lt;Statement&amp;gt; &amp;lt;Statement&amp;gt; :- &amp;lt;SelectionStatement&amp;gt;&amp;lt;Selector&amp;gt; &amp;lt;Statement&amp;gt; :- &amp;lt;SelectionStatement&amp;gt;=&amp;lt;Statement&amp;gt; &amp;lt;Statement&amp;gt; :- &amp;lt;SelectionStatement&amp;gt;&amp;lt;FunctionChain&amp;gt; # Functions &amp;lt;FunctionChain&amp;gt; :- &amp;lt;Function&amp;gt;&amp;lt;FunctionChain&amp;gt; &amp;lt;FunctionChain&amp;gt; :- &amp;lt;Function&amp;gt; # Selectors &amp;lt;SelectionStatement&amp;gt; :- &amp;lt;Selector&amp;gt;&amp;lt;SelectionStatement&amp;gt; &amp;lt;SelectionStatement&amp;gt; :- &amp;lt;Iterator&amp;gt;&amp;lt;SelectionStatement&amp;gt; &amp;lt;SelectionStatement&amp;gt; :- &amp;lt;Iterator&amp;gt; &amp;lt;SelectionStatement&amp;gt; :- &amp;lt;Selector&amp;gt; &amp;lt;Selector&amp;gt; :- .&amp;lt;int&amp;gt; &amp;lt;Selector&amp;gt; :- .&amp;lt;float&amp;gt; &amp;lt;Selector&amp;gt; :- .&amp;lt;string&amp;gt; &amp;lt;Selector&amp;gt; :- .[&amp;lt;int&amp;gt;] # Iterators &amp;lt;Iterator&amp;gt; :- .[*] &amp;lt;Iterator&amp;gt; :- .[&amp;lt;int&amp;gt;:&amp;lt;int&amp;gt;] &amp;lt;Iterator&amp;gt; :- .[:&amp;lt;int&amp;gt;] &amp;lt;Iterator&amp;gt; :- .[&amp;lt;int&amp;gt;:] # Values &amp;lt;Value&amp;gt; :- &amp;lt;SelectionStatement&amp;gt; &amp;lt;Value&amp;gt; :- &amp;lt;int&amp;gt; &amp;lt;Value&amp;gt; :- &amp;lt;float&amp;gt; &amp;lt;Value&amp;gt; :- &amp;lt;string&amp;gt; &amp;lt;Value&amp;gt; :- &amp;lt;json&amp;gt; &amp;lt;string&amp;gt; :- s(.</description>
+    </item>
+    
+    <item>
+      <title>Running C&#43;&#43; function from Lua</title>
+      <link>http://zwodahs.me/tutorials/lua/3/</link>
+      <pubDate>Sun, 25 Sep 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://zwodahs.me/tutorials/lua/3/</guid>
+      <description>In this tutorial, I will cover how to run a C++ function from a Lua script. This is a pretty easy part so I am going to just show the code.
+extern &amp;quot;C&amp;quot; { static int compute(lua_State* L) { int x = luaL_checkint(L, 1); int y = luaL_checkint(L, 2); lua_pushnumber(L, x - y); return 1; } } int main(int argc, char* argv[]) { lua_State* L = setupLuaState(); lua_pushcfunction(L, compute); // push the c function to the stack lua_setglobal(L, &amp;quot;compute&amp;quot;); // add the function to the global load(L, &amp;quot;run.</description>
+    </item>
+    
+    <item>
+      <title>Running Lua function from C&#43;&#43;</title>
+      <link>http://zwodahs.me/tutorials/lua/2/</link>
+      <pubDate>Sun, 25 Sep 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://zwodahs.me/tutorials/lua/2/</guid>
+      <description>In this tutorial, we will cover how to run a Lua function with a C++ program. There are 2 parts to the tutorial. The first part will cover how to call the function. The second part will show a simple way to wrap your Lua function inside a C++ function. In additional, we will see how to return multiple values from Lua function and how to access it from C++.</description>
+    </item>
+    
+    <item>
+      <title>Setting Up</title>
+      <link>http://zwodahs.me/tutorials/lua/1/</link>
+      <pubDate>Sun, 25 Sep 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://zwodahs.me/tutorials/lua/1/</guid>
+      <description>This tutorial is to set up the lua environment in our C++ program and make sure we can get it to run. Let me first show you the full code.
+/** * main.cpp */ #include &amp;lt;lua.hpp&amp;gt; #include &amp;lt;iostream&amp;gt; #include &amp;lt;vector&amp;gt; /** * A Simple function to load and run the file. Instead of just using luaL_dofile, I have split them up to print the proper error message. */ bool load(lua_State* L, const std::string&amp;amp; filename) { int status = luaL_loadfile(L, filename.</description>
+    </item>
+    
+    <item>
+      <title>External Resources and links</title>
+      <link>http://zwodahs.me/links/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://zwodahs.me/links/</guid>
+      <description> Some useful links, just keeping them here for references.
+Git  Good git branching model Concepts on git trees and reset Git internals  Python  Hitchhiker&amp;rsquo;s guide to python - A must read for new python developer. Beyond PEP8 - Very good talk about coding style.  Python-Tornado  Roughly how tornado async works My custom option parser for tornado  </description>
+    </item>
+    
+    <item>
+      <title>My Tooling and Workflow</title>
+      <link>http://zwodahs.me/about/workflow/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://zwodahs.me/about/workflow/</guid>
+      <description>History I only started working on the commandline around 2012, mainly because I need to edit python scripts on the server. At this stage, I didn&amp;rsquo;t really dive into vim plugins and stuff, I just used the default one. It was only until when I started making game in C++ that I started really upgrade my tooling and build my vimfiles and dotfiles. Around 2014, I started working more on the remote server and I added tmux to my tooling.</description>
+    </item>
+    
+  </channel>
+</rss>

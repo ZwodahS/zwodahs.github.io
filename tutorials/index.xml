@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tutorials or Learnings on ZwodahS</title>
+    <link>http://zwodahs.me/tutorials/</link>
+    <description>Recent content in Tutorials or Learnings on ZwodahS</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 25 Sep 2016 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://zwodahs.me/tutorials/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Accessing C&#43;&#43; objects from lua</title>
+      <link>http://zwodahs.me/tutorials/lua/5/</link>
+      <pubDate>Sun, 25 Sep 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://zwodahs.me/tutorials/lua/5/</guid>
+      <description>In this tutorial, I will cover one method that you can use to access C++ objects from Lua.
+To start, let me describe the scenario that we will be implementing.
+Assume that we are making a game and we want to calculate the damage that each unit takes in a fight. Each unit has a damage attribute and a health attribute. We will do the calculation in the Lua script but store the attributes inside the C++ objects.</description>
+    </item>
+    
+    <item>
+      <title>Lua tutorial</title>
+      <link>http://zwodahs.me/tutorials/lua/</link>
+      <pubDate>Sun, 25 Sep 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://zwodahs.me/tutorials/lua/</guid>
+      <description>Welcome to the Lua tutorial. This is not a tutorial about Lua as a programming language; There are plenty of those around. Instead, I will assume you know the basic of lua and how Objects are modeled in Lua.
+This tutorial will cover how to write C++ programs that interact with Lua. There are many reasons why you would want to do this but usually is to allow for extension and modification without recompilation.</description>
+    </item>
+    
+    <item>
+      <title>Object-oriented in Lua</title>
+      <link>http://zwodahs.me/tutorials/lua/4/</link>
+      <pubDate>Sun, 25 Sep 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://zwodahs.me/tutorials/lua/4/</guid>
+      <description>Coming soon&amp;hellip;.
+Note: I probably will not be able to write this part, as I didn&amp;rsquo;t use Lua to create objects. If anyone have experience doing this, I can link to you =). Just let me know</description>
+    </item>
+    
+    <item>
+      <title>Packaging lua functions</title>
+      <link>http://zwodahs.me/tutorials/lua/6/</link>
+      <pubDate>Sun, 25 Sep 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://zwodahs.me/tutorials/lua/6/</guid>
+      <description>In part 2 of the tutorial, we have seen how we can call a Lua function from a C++ program. In this part of the tutorial, we will make use of that and put the functions in proper packages/modules. The main reason to do this is to make sure we don&amp;rsquo;t dirty the global namespaces, similar to why we use namespace in C++.
+First, let us look at the modification we do to the lua script.</description>
+    </item>
+    
+    <item>
+      <title>Running C&#43;&#43; function from Lua</title>
+      <link>http://zwodahs.me/tutorials/lua/3/</link>
+      <pubDate>Sun, 25 Sep 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://zwodahs.me/tutorials/lua/3/</guid>
+      <description>In this tutorial, I will cover how to run a C++ function from a Lua script. This is a pretty easy part so I am going to just show the code.
+extern &amp;quot;C&amp;quot; { static int compute(lua_State* L) { int x = luaL_checkint(L, 1); int y = luaL_checkint(L, 2); lua_pushnumber(L, x - y); return 1; } } int main(int argc, char* argv[]) { lua_State* L = setupLuaState(); lua_pushcfunction(L, compute); // push the c function to the stack lua_setglobal(L, &amp;quot;compute&amp;quot;); // add the function to the global load(L, &amp;quot;run.</description>
+    </item>
+    
+    <item>
+      <title>Running Lua function from C&#43;&#43;</title>
+      <link>http://zwodahs.me/tutorials/lua/2/</link>
+      <pubDate>Sun, 25 Sep 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://zwodahs.me/tutorials/lua/2/</guid>
+      <description>In this tutorial, we will cover how to run a Lua function with a C++ program. There are 2 parts to the tutorial. The first part will cover how to call the function. The second part will show a simple way to wrap your Lua function inside a C++ function. In additional, we will see how to return multiple values from Lua function and how to access it from C++.</description>
+    </item>
+    
+    <item>
+      <title>Setting Up</title>
+      <link>http://zwodahs.me/tutorials/lua/1/</link>
+      <pubDate>Sun, 25 Sep 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://zwodahs.me/tutorials/lua/1/</guid>
+      <description>This tutorial is to set up the lua environment in our C++ program and make sure we can get it to run. Let me first show you the full code.
+/** * main.cpp */ #include &amp;lt;lua.hpp&amp;gt; #include &amp;lt;iostream&amp;gt; #include &amp;lt;vector&amp;gt; /** * A Simple function to load and run the file. Instead of just using luaL_dofile, I have split them up to print the proper error message. */ bool load(lua_State* L, const std::string&amp;amp; filename) { int status = luaL_loadfile(L, filename.</description>
+    </item>
+    
+  </channel>
+</rss>
