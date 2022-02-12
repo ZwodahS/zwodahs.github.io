@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ZwodahS | Sprouting Potato</title>
+    <link>http://zwodahs.me/</link>
+    <description>Recent content on ZwodahS | Sprouting Potato</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 12 Feb 2022 16:24:07 +0800</lastBuildDate><atom:link href="http://zwodahs.me/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Dice Tribes Log #8</title>
+      <link>http://zwodahs.me/posts/2022-02-12-dice-tribes-log-9/</link>
+      <pubDate>Sat, 12 Feb 2022 16:24:07 +0800</pubDate>
+      
+      <guid>http://zwodahs.me/posts/2022-02-12-dice-tribes-log-9/</guid>
+      <description>X-POST from itch devlog
+After a few weeks of development, 0.3.0 is finally ready.
+0.3.0 was initially planned to be the first paid version. However, after some considerations, I have decided to keep the web version free for the time being and the optional paid version for Windows and Mac. Linux will come later. With 0.3.0, the game is now renamed to Dice Tribes instead of Dice Kingdom to avoid confusion with a few other games.</description>
+    </item>
+    
+    <item>
+      <title>Dice Kingdom Log #7</title>
+      <link>http://zwodahs.me/posts/2022-01-15-dice-tribes-log-8/</link>
+      <pubDate>Sat, 15 Jan 2022 11:20:43 +0800</pubDate>
+      
+      <guid>http://zwodahs.me/posts/2022-01-15-dice-tribes-log-8/</guid>
+      <description>X-POST from itch devlog
+This week add Tribes to the game.
+Tribes provide different starting points and add challenges to the game. There are currently 2 tribes in the demo, the settlers being the easier one and Wanderers being the harder one.
+This will also likely be the last build for the Demo.
+ Additional Thoughts:
+Also started work on the build pipeline for mac app and windows. Hopefully I can finish the work on the pipeline to start work on the Achievement system for the game, then I can start adding more types of buildings and locations.</description>
+    </item>
+    
+    <item>
+      <title>Dice Kingdom Log #6</title>
+      <link>http://zwodahs.me/posts/2022-01-08-dice-tribes-log-7/</link>
+      <pubDate>Sat, 08 Jan 2022 12:03:09 +0800</pubDate>
+      
+      <guid>http://zwodahs.me/posts/2022-01-08-dice-tribes-log-7/</guid>
+      <description>X-POST from itch devlog
+After a break from the holidays, this week brings a smaller updates to the demo.
+First, a help window was added to game to provide additional information and also a quick legend for all the icons. Many of the UI elements are also updated to make the text slightly bigger and make them more readable.
+This release will also be one of the last few release for the web demo version as the development for the full game starts.</description>
+    </item>
+    
+    <item>
+      <title>Dice Kingdom Log #5</title>
+      <link>http://zwodahs.me/posts/2021-12-18-dice-tribes-log-6/</link>
+      <pubDate>Sat, 18 Dec 2021 13:34:32 +0800</pubDate>
+      
+      <guid>http://zwodahs.me/posts/2021-12-18-dice-tribes-log-6/</guid>
+      <description>X-POST from itch devlog
+This weeks brings even more UI changes to the game. The goals of all these changes is to make the rules of the game clearer and make it easier to understand.
+One of the key changes made was to the window that is provided when hovering over building’s construction. Before the changes, you only get to see a wall of text. For some of the buildings, it can be easier to read but for others it is really unclear what the building does.</description>
+    </item>
+    
+    <item>
+      <title>Dice Kingdom Log #5</title>
+      <link>http://zwodahs.me/posts/2021-12-11-dice-tribes-log-5/</link>
+      <pubDate>Sat, 11 Dec 2021 14:51:15 +0800</pubDate>
+      
+      <guid>http://zwodahs.me/posts/2021-12-11-dice-tribes-log-5/</guid>
+      <description>X-POST from itch devlog
+A Devlog was posted last week show the new UI, and after 2 weeks of work, it is finally completed. I didn’t want to release a build last week as a lot of the stuffs wasn’t tested and the tutorial was also broken/incorrect after the UI rework.
+With the new build, the UI is updated and there is also new tutorial to go with it. This tutorial provides a more step by step guide to the game instead of the hint-type tutorial previously.</description>
+    </item>
+    
+    <item>
+      <title>Dice Kingdom Log #4</title>
+      <link>http://zwodahs.me/posts/2021-12-04-dice-tribes-log-4/</link>
+      <pubDate>Sat, 04 Dec 2021 13:05:00 +0800</pubDate>
+      
+      <guid>http://zwodahs.me/posts/2021-12-04-dice-tribes-log-4/</guid>
+      <description>X-POST from itch devlog
+After getting various feedback last week from people, it has become clear that the UI and the tutorial needed some work.
+Because of this, I set out a 2 weeks plan to rework them. I initially wanted to finish the UI rework and push a build this week but it seems like that is not possible. Instead, I will just share some of the changes here via screenshots.</description>
+    </item>
+    
+    <item>
+      <title>Dice Kingdom Log #3</title>
+      <link>http://zwodahs.me/posts/2021-11-26-dice-tribes-log-3/</link>
+      <pubDate>Fri, 26 Nov 2021 16:00:43 +0800</pubDate>
+      
+      <guid>http://zwodahs.me/posts/2021-11-26-dice-tribes-log-3/</guid>
+      <description>There were 2 releases done this week for dice kingdom, 0.1.1 and 0.1.2.
+I initially release 0.1.1 as I wanted to start working on achievements and I knew that was going to take a while. However after the release, I side-tracked into updating the cover art + colorscheme of the game so I decided to release it as 0.1.2.
+This week I manage to get in a couple of key things.</description>
+    </item>
+    
+    <item>
+      <title>Dice Kingdom Log #2</title>
+      <link>http://zwodahs.me/posts/2021-11-19-dice-tribes-log-2/</link>
+      <pubDate>Fri, 19 Nov 2021 19:24:50 +0800</pubDate>
+      
+      <guid>http://zwodahs.me/posts/2021-11-19-dice-tribes-log-2/</guid>
+      <description>The key goal for this week is to get the game to a playable state with at least one win condition. For the most part that has been done. I also took the opportunity to refactor a huge part of the code to make adding content easier.
+Win Conditions # Instead of one win conditions, I managed to make 3 of them this week. These 3 are the one that the player will see and know how to work towards to.</description>
+    </item>
+    
+    <item>
+      <title>Dice Kingdom Log #1</title>
+      <link>http://zwodahs.me/posts/2021-11-12-dice-tribes-log-1/</link>
+      <pubDate>Fri, 12 Nov 2021 14:17:25 +0800</pubDate>
+      
+      <guid>http://zwodahs.me/posts/2021-11-12-dice-tribes-log-1/</guid>
+      <description>In the recent HaxeJam, I created a small dice placement game call &amp;ldquo;Dice Kingdom&amp;rdquo;.
+HaxeJam2021 - Dice Kingdom by ZwodahS It took a lot of inspiration from games like Tharsis, Dicey Dungeons, Cultist Simulator, and a board game called Monolith.
+I like the idea a lot, and have decided to take a break from ETA and expand on Dice Kingdom. It feels like a good opportunity to create and polish a smaller commercial game.</description>
+    </item>
+    
+    <item>
+      <title>Setup</title>
+      <link>http://zwodahs.me/posts/2021-11-12-setup/</link>
+      <pubDate>Fri, 12 Nov 2021 13:29:34 +0800</pubDate>
+      
+      <guid>http://zwodahs.me/posts/2021-11-12-setup/</guid>
+      <description>I have been writing most of my development logs for &amp;ldquo;Explore The Abyss&amp;rdquo; over at itch.io. However after the HaxeJam, I decided to take a small break from ETA to expand on Dice Kingdom, which is the game I made for the game jam. The entry can be found here.
+Because of that, I missed 2-3 weeks of devlog. Devlog is really a good way to keep myself accountable, and also to keep myself sane.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html
+  lang="en-us"
+  class="dark"
+><head>
+  <meta charset="utf-8" />
+  
+    <meta http-equiv="content-language" content="en-us" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  
+  <title>Dice Kingdom Log #1 &middot; ZwodahS | Sprouting Potato</title>
+    <meta name="title" content="Dice Kingdom Log #1 &middot; ZwodahS | Sprouting Potato" />
+  
+  <meta name="description" content="" />
+  
+  
+  
+  <link rel="canonical" href="http://zwodahs.me/posts/2021-11-12-dice-tribes-log-1/" />
+  
+  
+  
+  
+  <link
+    type="text/css"
+    rel="stylesheet"
+    href="/css/schemes/congo.min.b48d6ba061dc77186a2524fb8aac5ac3823b2679a9299ca60325abbccc9c1764c884715f0ba24b4e2776cb3814df4af1f4c854b87207cd5d4c7a254da9b55751.css"
+    integrity="sha512-tI1roGHcdxhqJST7iqxaw4I7JnmpKZymAyWrvMycF2TIhHFfC6JLTid2yzgU30rx9MhUuHIHzV1MeiVNqbVXUQ=="
+  />
+  
+  
+  <link
+    type="text/css"
+    rel="stylesheet"
+    href="/css/compiled/main.min.402d3b4f742c02489d0fd69ca742521356f014e6cf7cebaa4e5ae7828b6c4847676ae80103ecb4fc1ccf8c7feea273005876aaa930ac102a50d707ea771b4ec2.css"
+    integrity="sha512-QC07T3QsAkidD9acp0JSE1bwFObPfOuqTlrngotsSEdnaugBA&#43;y0/BzPjH/uonMAWHaqqTCsECpQ1wfqdxtOwg=="
+  />
+  
+  
+  
+    <script>
+      localStorage.removeItem("preferredAppearance");
+    </script>
+  
+  
+  
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="Dice Kingdom Log #1" />
+<meta property="og:description" content="In the recent HaxeJam, I created a small dice placement game call &ldquo;Dice Kingdom&rdquo;.
+HaxeJam2021 - Dice Kingdom by ZwodahS It took a lot of inspiration from games like Tharsis, Dicey Dungeons, Cultist Simulator, and a board game called Monolith.
+I like the idea a lot, and have decided to take a break from ETA and expand on Dice Kingdom. It feels like a good opportunity to create and polish a smaller commercial game." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://zwodahs.me/posts/2021-11-12-dice-tribes-log-1/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-11-12T14:17:25+08:00" />
+<meta property="article:modified_time" content="2021-11-12T14:17:25+08:00" />
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Dice Kingdom Log #1"/>
+<meta name="twitter:description" content="In the recent HaxeJam, I created a small dice placement game call &ldquo;Dice Kingdom&rdquo;.
+HaxeJam2021 - Dice Kingdom by ZwodahS It took a lot of inspiration from games like Tharsis, Dicey Dungeons, Cultist Simulator, and a board game called Monolith.
+I like the idea a lot, and have decided to take a break from ETA and expand on Dice Kingdom. It feels like a good opportunity to create and polish a smaller commercial game."/>
+
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "articleSection": "Posts",
+    "name": "Dice Kingdom Log #1",
+    "headline": "Dice Kingdom Log #1",
+    "description": "In the recent HaxeJam, I created a small dice placement game call \u0026ldquo;Dice Kingdom\u0026rdquo;.\nHaxeJam2021 - Dice Kingdom by ZwodahS It took a lot of inspiration from games like Tharsis, Dicey Dungeons, Cultist Simulator, and a board game called Monolith.\nI like the idea a lot, and have decided to take a break from ETA and expand on Dice Kingdom. It feels like a good opportunity to create and polish a smaller commercial game.",
+    "inLanguage": "en-us",
+    "author" : {
+      "@type": "Person",
+      "name": ""
+    },
+    "creator" : {
+      "@type": "Person",
+      "name": ""
+    },
+    "copyrightHolder": "",
+    "copyrightYear": "2021",
+    "dateCreated": "2021-11-12T14:17:25\u002b08:00",
+    "datePublished": "2021-11-12T14:17:25\u002b08:00",
+    "dateModified": "2021-11-12T14:17:25\u002b08:00",
+    "url" : "http:\/\/zwodahs.me\/posts\/2021-11-12-dice-tribes-log-1\/",
+    "wordCount": "881",
+    "keywords": ["dice-tribes",]
+  }
+  </script>
+
+
+  
+  
+    <meta name="generator" content="Hugo 0.88.1" />
+  
+  
+  
+  
+  
+  
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+  
+  
+</head>
+<body
+    class="flex flex-col h-screen px-6 m-auto text-lg leading-7 bg-neutral text-neutral-900 sm:px-14 md:px-24 lg:px-32 dark:bg-neutral-800 dark:text-neutral max-w-7xl"
+  ><header
+  class="flex justify-between py-6 font-semibold sm:items-center sm:py-10 text-neutral-800 dark:text-neutral"
+>
+  
+  <div>
+    
+      <a
+        class="hover:underline hover:underline-primary-500 hover:underline-thickness-bold hover:underline-offset-small"
+        rel="me"
+        href="/"
+        >ZwodahS | Sprouting Potato</a
+      >
+  </div>
+  
+  
+    <nav>
+      <ul class="flex flex-col list-none sm:flex-row">
+        
+          <li class="mb-1 text-right sm:mb-0 sm:mr-7 sm:last:mr-0">
+            <a
+              class="hover:underline hover:underline-primary-500 hover:underline-thickness-bold hover:underline-offset-small"
+              href="/posts/"
+              title="Posts"
+              >Blog</a
+            >
+          </li>
+        
+          <li class="mb-1 text-right sm:mb-0 sm:mr-7 sm:last:mr-0">
+            <a
+              class="hover:underline hover:underline-primary-500 hover:underline-thickness-bold hover:underline-offset-small"
+              href="/categories/"
+              title="Categories"
+              >Categories</a
+            >
+          </li>
+        
+          <li class="mb-1 text-right sm:mb-0 sm:mr-7 sm:last:mr-0">
+            <a
+              class="hover:underline hover:underline-primary-500 hover:underline-thickness-bold hover:underline-offset-small"
+              href="/tags/"
+              title="Tags"
+              >Tags</a
+            >
+          </li>
+        
+      </ul>
+    </nav>
+  
+</header>
+<main class="flex-grow">
+  <article class="max-w-prose">
+    <header>
+      
+      <h1 class="mt-0 text-4xl font-extrabold text-neutral-800 dark:text-neutral">
+        Dice Kingdom Log #1
+      </h1>
+      <div class="mt-8 mb-12 text-base text-neutral-400 dark:text-neutral-500">
+        
+
+
+
+
+
+  
+  
+
+
+
+  
+
+  
+  
+    
+  
+
+  
+
+  
+
+
+  <div class="flex flex-row items-center">
+    
+    
+      <time datetime="2021-11-12 14:17:25 &#43;0800 &#43;08">12 November 2021</time>
+    
+
+    
+    
+  </div>
+
+
+      </div>
+    </header>
+    <section class="prose dark:prose-light">
+      <p>In the recent HaxeJam, I created a small dice placement game call &ldquo;Dice Kingdom&rdquo;.</p>
+<iframe src="https://itch.io/embed/1242442?border_width=0&amp;dark=true" width="206" height="165" frameborder="0"><a href="https://zwodahs.itch.io/haxejam2021-dice-kingdom">HaxeJam2021 - Dice Kingdom by ZwodahS</a></iframe>
+<p>It took a lot of inspiration from games like Tharsis, Dicey Dungeons, Cultist Simulator, and a board game called Monolith.</p>
+<p>I like the idea a lot, and have decided to take a break from ETA and expand on Dice Kingdom.
+It feels like a good opportunity to create and polish a smaller commercial game.</p>
+<h1 id="expanding-the-game">Expanding the game <a class="heading-anchor" href="#expanding-the-game" aria-label="Anchor">#</a></h1>
+<h2 id="reworking-key-mechanics">Reworking key mechanics <a class="heading-anchor" href="#reworking-key-mechanics" aria-label="Anchor">#</a></h2>
+<p>In the original game, the game is kind of split into 4 areas; <strong>Core Action</strong>, <strong>Buildings</strong>, <strong>Locations</strong>, <strong>Events</strong>.
+Most part of the game revolve around the core actions, which in the game jam version were <strong>Birth</strong>, <strong>Explore</strong>, <strong>Build</strong>, <strong>Train</strong>, <strong>Eat</strong>.</p>
+<h3 id="ambition-win-condition">Ambition (Win condition) <a class="heading-anchor" href="#ambition-win-condition" aria-label="Anchor">#</a></h3>
+<p>When building the game jam, I somewhat decided to make it more of a high score game instead of one that allows you to win.
+The game will slowly get kind of hard and at around turn 40, the game is almost near impossible to survive.
+Events called <strong>DeatBed</strong> will spawn and requires <strong>5</strong>, one of the rarer dice face to survive.</p>
+<p>There is one hidden location <strong>Mystic Forest</strong>, which allows the player to train a doctor.
+Having multiple doctors is one way that allows the players to survive longer.</p>
+<p>Having just high score means that the player does not know what to works towards to.
+This is the first thing that I needed to change when expanding the game.</p>
+<p>There were also other concerns.
+For example, if the win condition is hidden, the player might not know that there is a win condition or does not know how to work towards it.
+Because of this, I need to make at least some win condition visible and obvious and provide a check list for the player to work towards to.</p>
+<p>The way that this will be achieved is via a new type of Action; <strong>Ambition</strong>.</p>
+<p>Ambition will provide goals which the players can choose to embark on.
+Some goals will be disabled / hidden until certain criteria are met.
+When the player placed a dice on the goal, they will not be able to changed and the Ambition area will become an area to inform the player on how to work towards that goal.</p>
+<h3 id="removing--merging-core-actions">Removing / Merging Core Actions <a class="heading-anchor" href="#removing--merging-core-actions" aria-label="Anchor">#</a></h3>
+<p>Some of the core actions are also changed.
+For example, Eat and Birth is merged into a single action <strong>Village</strong>.
+This area consolidates all the action involving dice and food.</p>
+<p><strong>Train</strong> is also removed and moved into the various other areas; i.e. <strong>Explorer</strong> are now trained in <strong>Explore</strong>, and <strong>Farmers</strong> are now trained in <strong>Farm</strong>.</p>
+<h3 id="research">Research <a class="heading-anchor" href="#research" aria-label="Anchor">#</a></h3>
+<p><strong>Research</strong> and <strong>Science</strong> are also added to the game.
+This will provide different strategy and playstyles that the player can choose from.
+For example, instead of <strong>Farm</strong>, the player can choose other sources of food.</p>
+<h2 id="progress">Progress <a class="heading-anchor" href="#progress" aria-label="Anchor">#</a></h2>
+<p>Over the last 3 weeks (including this), the work is mostly on refactoring and setting up new systems to handle the new features.</p>
+<p>The key systems that are added so far are</p>
+<h3 id="1-saveload">1. Save/Load <a class="heading-anchor" href="#1-saveload" aria-label="Anchor">#</a></h3>
+<p>Adding Save/Load is something that I wanted to do for ETA (my other project) for a long time.
+Due to it being a key part of most games, I wanted it to be generic enough that I can use the same implementation across different games.
+With Dice Kingdom needing a save system, I took the opportunity to just solve the problem for both games at once.
+This requirements kind of forced me to refactor majority of the code which took longer than expected.</p>
+<h3 id="2-research-system">2. Research System <a class="heading-anchor" href="#2-research-system" aria-label="Anchor">#</a></h3>
+<p>Research System is the key system that dictates actions is available to the player.</p>
+<p>Each dice area can only show 8 dice slot at once.
+Because of this, I needed a way to show the available researches available to the player, which is more than 8 most of the time.
+I came up with 2 solutions.</p>
+<p>The first solution is to create an extended UI, similar to how Cultist Simulator will open up a new window.
+This will allow me to show a detailed tech-tree, similar to Civilisation.</p>
+<p>The second solution is to randomly choose from the available list, and display a subset.</p>
+<p>I choose to go with the second solution, partly because I am lazy to add a new type of interaction, but mostly because it makes the game way simplier.
+Similar to Research, Build will also implement this solution as it may also face the similar problem.
+Instead of showing 8, I instead choose to show 4, which also provide some variation from run to run.</p>
+<h2 id="final-thoughts">Final Thoughts <a class="heading-anchor" href="#final-thoughts" aria-label="Anchor">#</a></h2>
+<p>The development is progressing quite well and I am expecting to finish the beta build in the nex 2 weeks.
+For the beta build, I am expecting to have a few win conditions, with a couple of secret win conditions.
+There are already 4 different types of food buildings, and I will likely add more when I think of them.</p>
+<p>Eventually I would like to make this game a paid game, and limit the web version in some ways.
+Another way is to make it open source, with paid version, similar to Shapez.io and Aseprite.
+I guess I will cross the road when I am at that stage.</p>
+
+    </section>
+    <footer class="pt-8">
+      
+  <div class="flex">
+    
+    <div class="place-self-center">
+      
+      
+      
+
+    </div>
+  </div>
+
+
+      
+
+      
+  
+    <div class="pt-8 article-pagination">
+      <hr class="border-dotted border-neutral-300 dark:border-neutral-600" />
+      <div class="flex justify-between pt-3">
+        <span>
+          
+            <a class="flex" href="/posts/2021-11-19-dice-tribes-log-2/">
+              <span class="mr-3 article-pagination-direction">&larr;</span>
+              <span class="flex flex-col">
+                <span class="article-pagination-title mt-[0.1rem] leading-6"
+                  >Dice Kingdom Log #2</span
+                >
+                <span class="mt-[0.1rem] text-xs text-neutral-400 dark:text-neutral-500">
+                  
+                    <time datetime="2021-11-12 14:17:25 &#43;0800 &#43;08">12 November 2021</time>
+                  
+                </span>
+              </span>
+            </a>
+          
+        </span>
+        <span>
+          
+            <a class="flex text-right" href="/posts/2021-11-12-setup/">
+              <span class="flex flex-col">
+                <span class="article-pagination-title mt-[0.1rem] leading-6"
+                  >Setup</span
+                >
+                <span class="mt-[0.1rem] text-xs text-neutral-400 dark:text-neutral-500">
+                  
+                    <time datetime="2021-11-12 14:17:25 &#43;0800 &#43;08">12 November 2021</time>
+                  
+                </span>
+              </span>
+              <span class="ml-3 article-pagination-direction">&rarr;</span>
+            </a>
+          
+        </span>
+      </div>
+    </div>
+  
+
+
+    </footer>
+    
+  </article>
+</main><footer class="py-10">
+  
+  
+  <div class="flex justify-between">
+    <div>
+      
+      <p class="text-sm text-neutral-400 dark:text-neutral-500">
+          &copy;
+          2022
+          
+      </p>
+      
+      
+        <p class="text-xs text-neutral-300 dark:text-neutral-600">
+          
+          
+          Powered by <a class="hover:underline hover:underline-primary-300 hover:text-primary-400"
+            href="https://gohugo.io/" target="_blank" rel="noopener noreferrer">Hugo</a> &amp; <a class="hover:underline hover:underline-primary-300 hover:text-primary-400" href="https://git.io/hugo-congo" target="_blank" rel="noopener noreferrer">Congo</a>
+        </p>
+      
+    </div>
+    
+    
+  </div>
+  
+  
+</footer>
+</body>
+</html>
