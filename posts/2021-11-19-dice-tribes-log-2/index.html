@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html
+  lang="en-us"
+  class="dark"
+><head>
+  <meta charset="utf-8" />
+  
+    <meta http-equiv="content-language" content="en-us" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  
+  <title>Dice Kingdom Log #2 &middot; ZwodahS | Sprouting Potato</title>
+    <meta name="title" content="Dice Kingdom Log #2 &middot; ZwodahS | Sprouting Potato" />
+  
+  <meta name="description" content="" />
+  
+  
+  
+  <link rel="canonical" href="http://zwodahs.me/posts/2021-11-19-dice-tribes-log-2/" />
+  
+  
+  
+  
+  <link
+    type="text/css"
+    rel="stylesheet"
+    href="/css/schemes/congo.min.b48d6ba061dc77186a2524fb8aac5ac3823b2679a9299ca60325abbccc9c1764c884715f0ba24b4e2776cb3814df4af1f4c854b87207cd5d4c7a254da9b55751.css"
+    integrity="sha512-tI1roGHcdxhqJST7iqxaw4I7JnmpKZymAyWrvMycF2TIhHFfC6JLTid2yzgU30rx9MhUuHIHzV1MeiVNqbVXUQ=="
+  />
+  
+  
+  <link
+    type="text/css"
+    rel="stylesheet"
+    href="/css/compiled/main.min.402d3b4f742c02489d0fd69ca742521356f014e6cf7cebaa4e5ae7828b6c4847676ae80103ecb4fc1ccf8c7feea273005876aaa930ac102a50d707ea771b4ec2.css"
+    integrity="sha512-QC07T3QsAkidD9acp0JSE1bwFObPfOuqTlrngotsSEdnaugBA&#43;y0/BzPjH/uonMAWHaqqTCsECpQ1wfqdxtOwg=="
+  />
+  
+  
+  
+    <script>
+      localStorage.removeItem("preferredAppearance");
+    </script>
+  
+  
+  
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="Dice Kingdom Log #2" />
+<meta property="og:description" content="The key goal for this week is to get the game to a playable state with at least one win condition. For the most part that has been done. I also took the opportunity to refactor a huge part of the code to make adding content easier.
+Win Conditions # Instead of one win conditions, I managed to make 3 of them this week. These 3 are the one that the player will see and know how to work towards to." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://zwodahs.me/posts/2021-11-19-dice-tribes-log-2/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-11-19T19:24:50+08:00" />
+<meta property="article:modified_time" content="2021-11-19T19:24:50+08:00" />
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Dice Kingdom Log #2"/>
+<meta name="twitter:description" content="The key goal for this week is to get the game to a playable state with at least one win condition. For the most part that has been done. I also took the opportunity to refactor a huge part of the code to make adding content easier.
+Win Conditions # Instead of one win conditions, I managed to make 3 of them this week. These 3 are the one that the player will see and know how to work towards to."/>
+
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "articleSection": "Posts",
+    "name": "Dice Kingdom Log #2",
+    "headline": "Dice Kingdom Log #2",
+    "description": "The key goal for this week is to get the game to a playable state with at least one win condition. For the most part that has been done. I also took the opportunity to refactor a huge part of the code to make adding content easier.\nWin Conditions # Instead of one win conditions, I managed to make 3 of them this week. These 3 are the one that the player will see and know how to work towards to.",
+    "inLanguage": "en-us",
+    "author" : {
+      "@type": "Person",
+      "name": ""
+    },
+    "creator" : {
+      "@type": "Person",
+      "name": ""
+    },
+    "copyrightHolder": "",
+    "copyrightYear": "2021",
+    "dateCreated": "2021-11-19T19:24:50\u002b08:00",
+    "datePublished": "2021-11-19T19:24:50\u002b08:00",
+    "dateModified": "2021-11-19T19:24:50\u002b08:00",
+    "url" : "http:\/\/zwodahs.me\/posts\/2021-11-19-dice-tribes-log-2\/",
+    "wordCount": "549",
+    "keywords": ["dice-tribes",]
+  }
+  </script>
+
+
+  
+  
+    <meta name="generator" content="Hugo 0.88.1" />
+  
+  
+  
+  
+  
+  
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+  
+  
+</head>
+<body
+    class="flex flex-col h-screen px-6 m-auto text-lg leading-7 bg-neutral text-neutral-900 sm:px-14 md:px-24 lg:px-32 dark:bg-neutral-800 dark:text-neutral max-w-7xl"
+  ><header
+  class="flex justify-between py-6 font-semibold sm:items-center sm:py-10 text-neutral-800 dark:text-neutral"
+>
+  
+  <div>
+    
+      <a
+        class="hover:underline hover:underline-primary-500 hover:underline-thickness-bold hover:underline-offset-small"
+        rel="me"
+        href="/"
+        >ZwodahS | Sprouting Potato</a
+      >
+  </div>
+  
+  
+    <nav>
+      <ul class="flex flex-col list-none sm:flex-row">
+        
+          <li class="mb-1 text-right sm:mb-0 sm:mr-7 sm:last:mr-0">
+            <a
+              class="hover:underline hover:underline-primary-500 hover:underline-thickness-bold hover:underline-offset-small"
+              href="/posts/"
+              title="Posts"
+              >Blog</a
+            >
+          </li>
+        
+          <li class="mb-1 text-right sm:mb-0 sm:mr-7 sm:last:mr-0">
+            <a
+              class="hover:underline hover:underline-primary-500 hover:underline-thickness-bold hover:underline-offset-small"
+              href="/categories/"
+              title="Categories"
+              >Categories</a
+            >
+          </li>
+        
+          <li class="mb-1 text-right sm:mb-0 sm:mr-7 sm:last:mr-0">
+            <a
+              class="hover:underline hover:underline-primary-500 hover:underline-thickness-bold hover:underline-offset-small"
+              href="/tags/"
+              title="Tags"
+              >Tags</a
+            >
+          </li>
+        
+      </ul>
+    </nav>
+  
+</header>
+<main class="flex-grow">
+  <article class="max-w-prose">
+    <header>
+      
+      <h1 class="mt-0 text-4xl font-extrabold text-neutral-800 dark:text-neutral">
+        Dice Kingdom Log #2
+      </h1>
+      <div class="mt-8 mb-12 text-base text-neutral-400 dark:text-neutral-500">
+        
+
+
+
+
+
+  
+  
+
+
+
+  
+
+  
+  
+    
+  
+
+  
+
+  
+
+
+  <div class="flex flex-row items-center">
+    
+    
+      <time datetime="2021-11-19 19:24:50 &#43;0800 &#43;08">19 November 2021</time>
+    
+
+    
+    
+  </div>
+
+
+      </div>
+    </header>
+    <section class="prose dark:prose-light">
+      <p>The key goal for this week is to get the game to a playable state with at least one win condition.
+For the most part that has been done.
+I also took the opportunity to refactor a huge part of the code to make adding content easier.</p>
+<h1 id="win-conditions">Win Conditions <a class="heading-anchor" href="#win-conditions" aria-label="Anchor">#</a></h1>
+<p>Instead of one win conditions, I managed to make 3 of them this week.
+These 3 are the one that the player will see and know how to work towards to.</p>
+<h2 id="prosperity">Prosperity <a class="heading-anchor" href="#prosperity" aria-label="Anchor">#</a></h2>
+<p>The first win condition that does not required any research is <strong>Prosperity</strong>.
+This can be considered as the default win condition.</p>
+<p>The win condition have 3 steps.</p>
+<ol>
+<li>Reach the max population of 15.</li>
+<li>Activate Golden Age.</li>
+<li>Survive 10 turns.</li>
+</ol>
+<p>The key challenge to the condition is preparation and surviving the 10 turns, as during golden age, all villagers will consume 2 food instead of 1.
+The player need to prepare surplus or be ready to handle the increase food consumption.</p>
+<h2 id="faith">Faith <a class="heading-anchor" href="#faith" aria-label="Anchor">#</a></h2>
+<p>The second win condition added was <strong>Faith</strong>.</p>
+<p>This win condition also have 3 steps.</p>
+<ol>
+<li>Build a Temple; which is also available once the player activate the Ambition.</li>
+<li>Convert 6 Believers.</li>
+<li>Create a (Imaginary) Statue.</li>
+</ol>
+<p>The key challenge is the conversion of believers and creation of the statue.
+This is probably the hardest of the 3.</p>
+<h2 id="conquest">Conquest <a class="heading-anchor" href="#conquest" aria-label="Anchor">#</a></h2>
+<p>The third win condition added was <strong>Conquest</strong>.</p>
+<p>Conquest is a simplier objective.
+The player is required to play a mastermind/codebreaker game with dice.
+The only dice that can be used is soldier, requiring the player to build a barracks and train them.</p>
+<p>With luck, the code breaking will only take about 6~7 turns, and it does not require the player to put all the dice at once.
+However, at the last stage, the player will have to re-roll the dice a lot to get to the face to finally beat it.
+This is one of the goal that the earlier you start and commit, the easier it is.</p>
+<h1 id="balancing">Balancing <a class="heading-anchor" href="#balancing" aria-label="Anchor">#</a></h1>
+<p>I also had to rebalance the end game events.
+In the game jam version, I had to end the game around turn 40, which is quite late.</p>
+<p>This time round, the death events will start around turn 18, and slowly increase in intensity and will almost reach unsurvivable state at 30.</p>
+<p>A lot of the numbers regarding food generations is also changed.
+Previously I only take into account how much 1 dice can be converted to food.
+However, in playtesting, I realised that there are more variables to this.</p>
+<p>For example, the ability that leftover dice can be put to use is really unaccounted for in the previous version; especially if those dice values aren&rsquo;t used elsewhere.
+Fishery is a big part of this.
+I balanced Fishery to a EV of 3, which by calculating, means that it should output 4 food per successful fish.
+However, being able to throw any leftover dice to fishery makes it stronger than Farm and ForagerHut.
+I instead then set the number to 3, which makes it feel more balanced.</p>
+<h1 id="conclusion">Conclusion <a class="heading-anchor" href="#conclusion" aria-label="Anchor">#</a></h1>
+<p>In playtesting, a lot new ideas came up, and I look forward to finishing them next week.
+I also hope to implement 3 new win conditions next week, together with an achievement system to hint at these win conditions.</p>
+
+    </section>
+    <footer class="pt-8">
+      
+  <div class="flex">
+    
+    <div class="place-self-center">
+      
+      
+      
+
+    </div>
+  </div>
+
+
+      
+
+      
+  
+    <div class="pt-8 article-pagination">
+      <hr class="border-dotted border-neutral-300 dark:border-neutral-600" />
+      <div class="flex justify-between pt-3">
+        <span>
+          
+            <a class="flex" href="/posts/2021-11-26-dice-tribes-log-3/">
+              <span class="mr-3 article-pagination-direction">&larr;</span>
+              <span class="flex flex-col">
+                <span class="article-pagination-title mt-[0.1rem] leading-6"
+                  >Dice Kingdom Log #3</span
+                >
+                <span class="mt-[0.1rem] text-xs text-neutral-400 dark:text-neutral-500">
+                  
+                    <time datetime="2021-11-19 19:24:50 &#43;0800 &#43;08">19 November 2021</time>
+                  
+                </span>
+              </span>
+            </a>
+          
+        </span>
+        <span>
+          
+            <a class="flex text-right" href="/posts/2021-11-12-dice-tribes-log-1/">
+              <span class="flex flex-col">
+                <span class="article-pagination-title mt-[0.1rem] leading-6"
+                  >Dice Kingdom Log #1</span
+                >
+                <span class="mt-[0.1rem] text-xs text-neutral-400 dark:text-neutral-500">
+                  
+                    <time datetime="2021-11-19 19:24:50 &#43;0800 &#43;08">19 November 2021</time>
+                  
+                </span>
+              </span>
+              <span class="ml-3 article-pagination-direction">&rarr;</span>
+            </a>
+          
+        </span>
+      </div>
+    </div>
+  
+
+
+    </footer>
+    
+  </article>
+</main><footer class="py-10">
+  
+  
+  <div class="flex justify-between">
+    <div>
+      
+      <p class="text-sm text-neutral-400 dark:text-neutral-500">
+          &copy;
+          2022
+          
+      </p>
+      
+      
+        <p class="text-xs text-neutral-300 dark:text-neutral-600">
+          
+          
+          Powered by <a class="hover:underline hover:underline-primary-300 hover:text-primary-400"
+            href="https://gohugo.io/" target="_blank" rel="noopener noreferrer">Hugo</a> &amp; <a class="hover:underline hover:underline-primary-300 hover:text-primary-400" href="https://git.io/hugo-congo" target="_blank" rel="noopener noreferrer">Congo</a>
+        </p>
+      
+    </div>
+    
+    
+  </div>
+  
+  
+</footer>
+</body>
+</html>

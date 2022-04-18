@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html
+  lang="en-us"
+  class="dark"
+><head>
+  <meta charset="utf-8" />
+  
+    <meta http-equiv="content-language" content="en-us" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  
+  <title>Dice Kingdom Log #5 &middot; ZwodahS | Sprouting Potato</title>
+    <meta name="title" content="Dice Kingdom Log #5 &middot; ZwodahS | Sprouting Potato" />
+  
+  <meta name="description" content="" />
+  
+  
+  
+  <link rel="canonical" href="http://zwodahs.me/posts/2021-12-18-dice-tribes-log-6/" />
+  
+  
+  
+  
+  <link
+    type="text/css"
+    rel="stylesheet"
+    href="/css/schemes/congo.min.b48d6ba061dc77186a2524fb8aac5ac3823b2679a9299ca60325abbccc9c1764c884715f0ba24b4e2776cb3814df4af1f4c854b87207cd5d4c7a254da9b55751.css"
+    integrity="sha512-tI1roGHcdxhqJST7iqxaw4I7JnmpKZymAyWrvMycF2TIhHFfC6JLTid2yzgU30rx9MhUuHIHzV1MeiVNqbVXUQ=="
+  />
+  
+  
+  <link
+    type="text/css"
+    rel="stylesheet"
+    href="/css/compiled/main.min.402d3b4f742c02489d0fd69ca742521356f014e6cf7cebaa4e5ae7828b6c4847676ae80103ecb4fc1ccf8c7feea273005876aaa930ac102a50d707ea771b4ec2.css"
+    integrity="sha512-QC07T3QsAkidD9acp0JSE1bwFObPfOuqTlrngotsSEdnaugBA&#43;y0/BzPjH/uonMAWHaqqTCsECpQ1wfqdxtOwg=="
+  />
+  
+  
+  
+    <script>
+      localStorage.removeItem("preferredAppearance");
+    </script>
+  
+  
+  
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="Dice Kingdom Log #5" />
+<meta property="og:description" content="X-POST from itch devlog
+This weeks brings even more UI changes to the game. The goals of all these changes is to make the rules of the game clearer and make it easier to understand.
+One of the key changes made was to the window that is provided when hovering over building’s construction. Before the changes, you only get to see a wall of text. For some of the buildings, it can be easier to read but for others it is really unclear what the building does." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://zwodahs.me/posts/2021-12-18-dice-tribes-log-6/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-12-18T13:34:32+08:00" />
+<meta property="article:modified_time" content="2021-12-18T13:34:32+08:00" />
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Dice Kingdom Log #5"/>
+<meta name="twitter:description" content="X-POST from itch devlog
+This weeks brings even more UI changes to the game. The goals of all these changes is to make the rules of the game clearer and make it easier to understand.
+One of the key changes made was to the window that is provided when hovering over building’s construction. Before the changes, you only get to see a wall of text. For some of the buildings, it can be easier to read but for others it is really unclear what the building does."/>
+
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "articleSection": "Posts",
+    "name": "Dice Kingdom Log #5",
+    "headline": "Dice Kingdom Log #5",
+    "description": "X-POST from itch devlog\nThis weeks brings even more UI changes to the game. The goals of all these changes is to make the rules of the game clearer and make it easier to understand.\nOne of the key changes made was to the window that is provided when hovering over building’s construction. Before the changes, you only get to see a wall of text. For some of the buildings, it can be easier to read but for others it is really unclear what the building does.",
+    "inLanguage": "en-us",
+    "author" : {
+      "@type": "Person",
+      "name": ""
+    },
+    "creator" : {
+      "@type": "Person",
+      "name": ""
+    },
+    "copyrightHolder": "",
+    "copyrightYear": "2021",
+    "dateCreated": "2021-12-18T13:34:32\u002b08:00",
+    "datePublished": "2021-12-18T13:34:32\u002b08:00",
+    "dateModified": "2021-12-18T13:34:32\u002b08:00",
+    "url" : "http:\/\/zwodahs.me\/posts\/2021-12-18-dice-tribes-log-6\/",
+    "wordCount": "397",
+    "keywords": ["dice-tribes",]
+  }
+  </script>
+
+
+  
+  
+    <meta name="generator" content="Hugo 0.88.1" />
+  
+  
+  
+  
+  
+  
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+  
+  
+</head>
+<body
+    class="flex flex-col h-screen px-6 m-auto text-lg leading-7 bg-neutral text-neutral-900 sm:px-14 md:px-24 lg:px-32 dark:bg-neutral-800 dark:text-neutral max-w-7xl"
+  ><header
+  class="flex justify-between py-6 font-semibold sm:items-center sm:py-10 text-neutral-800 dark:text-neutral"
+>
+  
+  <div>
+    
+      <a
+        class="hover:underline hover:underline-primary-500 hover:underline-thickness-bold hover:underline-offset-small"
+        rel="me"
+        href="/"
+        >ZwodahS | Sprouting Potato</a
+      >
+  </div>
+  
+  
+    <nav>
+      <ul class="flex flex-col list-none sm:flex-row">
+        
+          <li class="mb-1 text-right sm:mb-0 sm:mr-7 sm:last:mr-0">
+            <a
+              class="hover:underline hover:underline-primary-500 hover:underline-thickness-bold hover:underline-offset-small"
+              href="/posts/"
+              title="Posts"
+              >Blog</a
+            >
+          </li>
+        
+          <li class="mb-1 text-right sm:mb-0 sm:mr-7 sm:last:mr-0">
+            <a
+              class="hover:underline hover:underline-primary-500 hover:underline-thickness-bold hover:underline-offset-small"
+              href="/categories/"
+              title="Categories"
+              >Categories</a
+            >
+          </li>
+        
+          <li class="mb-1 text-right sm:mb-0 sm:mr-7 sm:last:mr-0">
+            <a
+              class="hover:underline hover:underline-primary-500 hover:underline-thickness-bold hover:underline-offset-small"
+              href="/tags/"
+              title="Tags"
+              >Tags</a
+            >
+          </li>
+        
+      </ul>
+    </nav>
+  
+</header>
+<main class="flex-grow">
+  <article class="max-w-prose">
+    <header>
+      
+      <h1 class="mt-0 text-4xl font-extrabold text-neutral-800 dark:text-neutral">
+        Dice Kingdom Log #5
+      </h1>
+      <div class="mt-8 mb-12 text-base text-neutral-400 dark:text-neutral-500">
+        
+
+
+
+
+
+  
+  
+
+
+
+  
+
+  
+  
+    
+  
+
+  
+
+  
+
+
+  <div class="flex flex-row items-center">
+    
+    
+      <time datetime="2021-12-18 13:34:32 &#43;0800 &#43;08">18 December 2021</time>
+    
+
+    
+    
+  </div>
+
+
+      </div>
+    </header>
+    <section class="prose dark:prose-light">
+      <p>X-POST from <a href="https://zwodahs.itch.io/dice-kingdom/devlog/325883/dev-log-3-even-more-ui-updates-015">itch devlog</a></p>
+<p>This weeks brings even more UI changes to the game. The goals of all these changes is to make the rules of the game clearer and make it easier to understand.</p>
+<p>One of the key changes made was to the window that is provided when hovering over building’s construction.
+<img src="/static/20211218/before.png" alt=""></p>
+<p>Before the changes, you only get to see a wall of text. For some of the buildings, it can be easier to read but for others it is really unclear what the building does.</p>
+<p><img src="/static/20211218/after.png" alt="">
+After the update, when hovering over the slot, the building will be displayed together with instructions on how the building works. The combination of the 2 will hopefully make it easier to understand. This change has also be added to Research.</p>
+<h2 id="warning-system">Warning System <a class="heading-anchor" href="#warning-system" aria-label="Anchor">#</a></h2>
+<p>In additional to changing the UI, a new warning system is also added. Currently this warning system will warn when there will be not enough food for all the villagers and when an event is expiring soon.</p>
+<p><img src="/static/20211218/warning.png" alt="">
+This helps to provide unintentional starving of the villagers and will hopefully make the experience better.</p>
+<p>That concludes the changes for the week.</p>
+<hr>
+<p>Some additional dev thoughts:</p>
+<p>The warning system came around when I was doing a full run of the game.
+I tried surviving past the point that I wanted the game to end; i.e. turn 40.
+The idea is that around turn 30, the game will get increasing hard with the events and eventually (and hopefully) by turn 40, the player will be killed.</p>
+<p>During the time around turn 35+, I realised that I need to do the same checks every turn.
+Step 1, check that I have enough food for this turn.
+Step 2, ensure that I clear all the death events</p>
+<p>Because of this, I feel that having the game just telling me that I don&rsquo;t have enough food might actually be better.
+This warning system can then be expanded in the future to other stuffs in the future, for now it will just serve Food and Expiring Events.</p>
+<p>Another insight from the playthrough was how easy it is to survive to turn 40 with only a small preparation.
+I may have overestimate how fast the game will kill you.
+The game is really balanced around the game ending at turn 40, so I suspect I will have to increase the difficulty at the end.</p>
+
+    </section>
+    <footer class="pt-8">
+      
+  <div class="flex">
+    
+    <div class="place-self-center">
+      
+      
+      
+
+    </div>
+  </div>
+
+
+      
+
+      
+  
+    <div class="pt-8 article-pagination">
+      <hr class="border-dotted border-neutral-300 dark:border-neutral-600" />
+      <div class="flex justify-between pt-3">
+        <span>
+          
+            <a class="flex" href="/posts/2022-01-08-dice-tribes-log-7/">
+              <span class="mr-3 article-pagination-direction">&larr;</span>
+              <span class="flex flex-col">
+                <span class="article-pagination-title mt-[0.1rem] leading-6"
+                  >Dice Kingdom Log #6</span
+                >
+                <span class="mt-[0.1rem] text-xs text-neutral-400 dark:text-neutral-500">
+                  
+                    <time datetime="2021-12-18 13:34:32 &#43;0800 &#43;08">18 December 2021</time>
+                  
+                </span>
+              </span>
+            </a>
+          
+        </span>
+        <span>
+          
+            <a class="flex text-right" href="/posts/2021-12-11-dice-tribes-log-5/">
+              <span class="flex flex-col">
+                <span class="article-pagination-title mt-[0.1rem] leading-6"
+                  >Dice Kingdom Log #5</span
+                >
+                <span class="mt-[0.1rem] text-xs text-neutral-400 dark:text-neutral-500">
+                  
+                    <time datetime="2021-12-18 13:34:32 &#43;0800 &#43;08">18 December 2021</time>
+                  
+                </span>
+              </span>
+              <span class="ml-3 article-pagination-direction">&rarr;</span>
+            </a>
+          
+        </span>
+      </div>
+    </div>
+  
+
+
+    </footer>
+    
+  </article>
+</main><footer class="py-10">
+  
+  
+  <div class="flex justify-between">
+    <div>
+      
+      <p class="text-sm text-neutral-400 dark:text-neutral-500">
+          &copy;
+          2022
+          
+      </p>
+      
+      
+        <p class="text-xs text-neutral-300 dark:text-neutral-600">
+          
+          
+          Powered by <a class="hover:underline hover:underline-primary-300 hover:text-primary-400"
+            href="https://gohugo.io/" target="_blank" rel="noopener noreferrer">Hugo</a> &amp; <a class="hover:underline hover:underline-primary-300 hover:text-primary-400" href="https://git.io/hugo-congo" target="_blank" rel="noopener noreferrer">Congo</a>
+        </p>
+      
+    </div>
+    
+    
+  </div>
+  
+  
+</footer>
+</body>
+</html>
